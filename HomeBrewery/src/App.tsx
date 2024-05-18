@@ -4,11 +4,15 @@ import './css/navbar.css'
 import Footer from './components/Footer'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
+import { useState } from 'react'
+import { useNavigate } from "react-router-dom";
 
 
 
 
-function App() {
+function App(){
+
+
 
   return (
     <>

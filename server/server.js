@@ -3,6 +3,8 @@ const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');  // Uvoz uuid knjižnice
+const sendEmail = require('./services/emailService')
+
 
 const app = express();
 const server = http.createServer(app);
@@ -23,6 +25,7 @@ app.get('/', (req, res) => {
 app.get('/create-room', (req, res) => {
     const roomId = uuidv4();  // Generiraj unikatni ID za sobo
     res.send({ roomId, link: `http://localhost:5173/room/${roomId}` });
+    sendEmail(`http://localhost:5173/room/${roomId}`)
 });
 
 io.on('connection', (socket) => {
@@ -31,6 +34,7 @@ io.on('connection', (socket) => {
     socket.on('joinRoom', (room) => {
         socket.join(room);
         console.log(`User joined room: ${room}`);
+        
     });
 
     socket.on('message', (data) => {

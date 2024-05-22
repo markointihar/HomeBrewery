@@ -9,6 +9,7 @@ import {
 import Navbar from './components/Navbar.tsx';
 import ChatRoom from './components/ChatRoom.tsx';
 import Footer from './components/Footer.tsx';
+import Izdelki from './components/Izdelki.tsx';
 
 const router = createBrowserRouter([
   {
@@ -16,8 +17,12 @@ const router = createBrowserRouter([
     element:  <App />
   },
   {
+    path: "/izdelki",
+    element: <Izdelki />
+  },
+  {
     path: "/room/:roomId",
-    element: [<Navbar />, <ChatRoom />, <Footer />]
+    element: [<Navbar />, <ChatRoom />, <Footer /> ]
   }
 ])
 

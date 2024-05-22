@@ -5,7 +5,8 @@ import Footer from './components/Footer'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
 import { useState } from 'react'
-import { useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import Izdelki from './components/Izdelki'
 
 
 
@@ -17,7 +18,10 @@ function App(){
   return (
     <>
       <Navbar />
-      <Home />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/izdelki" element={<Izdelki />} />
+      </Routes>
       <Footer />      
     </>
   )

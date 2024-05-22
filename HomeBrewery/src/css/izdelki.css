@@ -1,0 +1,30 @@
+/* src/css/izdelki.css */
+.izdelki-container {
+  display: flex;
+}
+
+.sidebar {
+  width: 200px;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+}
+
+.izdelki-content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.izdelek {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.izdelek h2 {
+  margin: 0 0 10px;
+}
+
+.izdelek p {
+  margin: 5px 0;
+}

@@ -9,8 +9,12 @@
       padding: 0;
   }
   
-  .navbar > img {
+  .navbar  > img {
     height: 100%;
+  }
+  .item > a {
+    text-decoration: none;
+    color: black;
   }
   
   .nav-items {

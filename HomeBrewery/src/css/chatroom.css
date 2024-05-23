@@ -1,0 +1,69 @@
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    padding: 20px;
+    background-color: #073b3a;
+    height: 70vh;
+    border-radius: 20px;
+}
+
+.sporocila {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1; /* Adjusts to the remaining space inside chat-container */
+    overflow-y: auto; /* Allows scrolling if content overflows */
+  }
+
+.your-message, .other-message{
+    border-radius: 20px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding: 10px;
+    margin: 5px 0;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+.your-message {
+    background-color: #08a045;
+    align-self: flex-end;
+}
+.other-message {
+    background-color: #6bbf59;
+    align-self: flex-start;
+}
+
+
+.forma {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 2px;
+    gap: 3rem;
+}
+
+.forma > input {
+    width: 70%;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+}
+
+.forma > button {
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    background-color: #08a045;
+    color: white;
+    cursor: pointer;
+    width: 8%;
+}
+
+p {
+    color: white;
+}

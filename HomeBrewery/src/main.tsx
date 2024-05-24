@@ -10,6 +10,7 @@ import Navbar from './components/Navbar.tsx';
 import ChatRoom from './components/ChatRoom.tsx';
 import Footer from './components/Footer.tsx';
 import Izdelki from './components/Izdelki.tsx';
+import DodajIzdelek from './components/DodajIzdelek.tsx';
 
 const router = createBrowserRouter([
   {
@@ -17,8 +18,24 @@ const router = createBrowserRouter([
     element:  <App />
   },
   {
-    path: "/izdelki",
-    element: <Izdelki />
+    path: '/izdelki',
+    element: (
+      <>
+        <Navbar />
+        <Izdelki />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: '/dodajIzdelek',
+    element: (
+      <>
+        <Navbar />
+        <DodajIzdelek />
+        <Footer />
+      </>
+    ),
   },
   {
     path: "/room/:roomId",

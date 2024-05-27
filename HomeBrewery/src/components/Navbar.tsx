@@ -25,19 +25,22 @@ export default function Navbar(){
                 <div className="item" onClick={createRoom}>
                     Pomoč
                 </div>
-                
+                <div className="item">
+                    prvi
+                </div>
                 <div className="item">
                     <Link to={'/'} >
                         Home
                     </Link>
                 </div>
                 <div className="item">
+                    <Link to="/izdelki">Trgovina</Link>
+                </div>
+                <div className="item">
                     <Link to="/kosarica">Košarica</Link>
                 </div>
                 
-                <div className="item">
-                    prvi
-                </div>
+                
             </div>
             <img src={pfp}/>
             

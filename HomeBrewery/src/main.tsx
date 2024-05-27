@@ -13,6 +13,7 @@ import Izdelki from './components/Izdelki.tsx';
 import DodajIzdelek from './components/DodajIzdelek.tsx';
 import Cart from './components/Cart.tsx';
 import Kosarica from './components/Kosarica.tsx';
+import IzdelekDetails from './components/IzdelekDetails.tsx';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,16 @@ const router = createBrowserRouter([
       <>
         <Navbar />
         <Izdelki />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: '/izdelki/:id',
+    element: (
+      <>
+        <Navbar />
+        <IzdelekDetails  />
         <Footer />
       </>
     ),

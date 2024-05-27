@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../css/izdelki.css';
+import { Link } from 'react-router-dom';
 
 interface Izdelek {
   id: number;
@@ -26,7 +27,7 @@ const Izdelki: React.FC = () => {
   useEffect(() => {
     axios.get('http://localhost:3000/api/izdelki')
       .then(response => {
-        setIzdelki(response.data.izdelki);
+        setIzdelki(response.data.izdelki); // izdelki in kategorije so določeni v res.json izdelekController routerja
         setKategorije(response.data.kategorije);
       })
       .catch(error => {
@@ -53,17 +54,17 @@ const Izdelki: React.FC = () => {
       });
   }; */
 
+  const filteredIzdelki = izdelki.filter(izdelek => 
+    selectedCategories.length === 0 || 
+    (izdelek.kategorija_id !== null && selectedCategories.includes(izdelek.kategorija_id))
+  );
+
   const addToCart = (izdelek: Izdelek) => {
     const cart = JSON.parse(sessionStorage.getItem('cart') || '[]');
     cart.push(izdelek);
     sessionStorage.setItem('cart', JSON.stringify(cart));
     alert(`Izdelek "${izdelek.naziv}" je bil dodan v košarico.`);
   };
-
-  const filteredIzdelki = izdelki.filter(izdelek => 
-    selectedCategories.length === 0 || 
-    (izdelek.kategorija_id !== null && selectedCategories.includes(izdelek.kategorija_id))
-  );
 
   return (
     <div className="izdelki-container">
@@ -89,10 +90,12 @@ const Izdelki: React.FC = () => {
         <ul>
           {filteredIzdelki.map((izdelek, index) => (
             <li key={index} className="izdelek">
-              <h2>{izdelek.naziv}</h2>
+              <Link to={`/izdelki/${izdelek.id}`}>
+                <h2>{izdelek.naziv}</h2>
+              </Link>
               <p>Cena: {izdelek.cena} EUR</p>
               <p>Opis: {izdelek.opis}</p>
-              <p>Kategorija:{izdelek.ime_kategorije}</p>
+              <p>Kategorija: {izdelek.ime_kategorije}</p>
               <button onClick={() => addToCart(izdelek)}>Dodaj v košarico</button>
             </li>
           ))}

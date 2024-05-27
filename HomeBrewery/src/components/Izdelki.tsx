@@ -9,12 +9,13 @@ interface Izdelek {
   naziv: string;
   cena: number;
   opis: string;
+  ime_kategorije: string;
   kategorija_id: number | null;
 }
 
 interface Kategorija {
   id: number;
-  naziv: string;
+  ime: string;
 }
 
 const Izdelki: React.FC = () => {
@@ -39,6 +40,17 @@ const Izdelki: React.FC = () => {
         ? prevSelected.filter(categoryId => categoryId !== id)
         : [...prevSelected, id]
     );
+  };
+
+  const addToCart = (izdelek: Izdelek) => {
+    console.log('Adding to cart:', izdelek);
+    axios.post('http://localhost:3000/api/cart', { izdelekId: izdelek.id })
+      .then(response => {
+        alert(`Izdelek ${izdelek.naziv} je bil dodan v košarico.`);
+      })
+      .catch(error => {
+        console.error('Prišlo je do napake pri dodajanju izdelka v košarico:', error);
+      });
   };
 
   const filteredIzdelki = izdelki.filter(izdelek => 
@@ -68,12 +80,13 @@ const Izdelki: React.FC = () => {
       <div className="izdelki-content">
         <h1>Seznam izdelkov</h1>
         <ul>
-          {filteredIzdelki.map(izdelek => (
-            <li key={izdelek.id} className="izdelek">
+          {filteredIzdelki.map((izdelek, index) => (
+            <li key={index} className="izdelek">
               <h2>{izdelek.naziv}</h2>
               <p>Cena: {izdelek.cena} EUR</p>
               <p>Opis: {izdelek.opis}</p>
-              <p>Kategorija ID: {izdelek.kategorija_id}</p>
+              <p>Kategorija:{izdelek.ime_kategorije}</p>
+              <button onClick={() => addToCart(izdelek)}>Dodaj v košarico</button>
             </li>
           ))}
         </ul>

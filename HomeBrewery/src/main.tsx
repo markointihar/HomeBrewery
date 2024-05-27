@@ -11,6 +11,8 @@ import ChatRoom from './components/ChatRoom.tsx';
 import Footer from './components/Footer.tsx';
 import Izdelki from './components/Izdelki.tsx';
 import DodajIzdelek from './components/DodajIzdelek.tsx';
+import Cart from './components/Cart.tsx';
+import Kosarica from './components/Kosarica.tsx';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +35,26 @@ const router = createBrowserRouter([
       <>
         <Navbar />
         <DodajIzdelek />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: '/kosarica',
+    element: (
+      <>
+        <Navbar />
+        <Kosarica />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: '/cart',
+    element: (
+      <>
+        <Navbar />
+        <Cart />
         <Footer />
       </>
     ),

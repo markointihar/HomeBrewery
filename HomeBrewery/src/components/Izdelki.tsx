@@ -42,7 +42,7 @@ const Izdelki: React.FC = () => {
     );
   };
 
-  const addToCart = (izdelek: Izdelek) => {
+/*   const addToCart = (izdelek: Izdelek) => {
     console.log('Adding to cart:', izdelek);
     axios.post('http://localhost:3000/api/cart', { izdelekId: izdelek.id })
       .then(response => {
@@ -51,6 +51,13 @@ const Izdelki: React.FC = () => {
       .catch(error => {
         console.error('Prišlo je do napake pri dodajanju izdelka v košarico:', error);
       });
+  }; */
+
+  const addToCart = (izdelek: Izdelek) => {
+    const cart = JSON.parse(sessionStorage.getItem('cart') || '[]');
+    cart.push(izdelek);
+    sessionStorage.setItem('cart', JSON.stringify(cart));
+    alert(`Izdelek "${izdelek.naziv}" je bil dodan v košarico.`);
   };
 
   const filteredIzdelki = izdelki.filter(izdelek => 

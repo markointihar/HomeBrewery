@@ -31,7 +31,9 @@ export default function Navbar(){
                         Home
                     </Link>
                 </div>
-                
+                <div className="item">
+                    <Link to="/kosarica">Košarica</Link>
+                </div>
                 
                 <div className="item">
                     prvi

@@ -7,6 +7,9 @@ import Navbar from './components/Navbar'
 import { useState } from 'react'
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Izdelki from './components/Izdelki'
+import DodajIzdelek from './components/DodajIzdelek'
+import Cart from './components/Cart'
+import Kosarica from './components/Kosarica'
 
 
 
@@ -21,6 +24,9 @@ function App(){
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/izdelki" element={<Izdelki />} />
+        <Route path="/dodajIzdelek" element={<DodajIzdelek />} />
+        <Route path="/kosarica" element={<Kosarica />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />      
     </>

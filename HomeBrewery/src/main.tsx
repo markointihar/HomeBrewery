@@ -10,11 +10,16 @@ import Navbar from './components/Navbar.tsx';
 import ChatRoom from './components/ChatRoom.tsx';
 import Footer from './components/Footer.tsx';
 import Izdelki from './components/Izdelki.tsx';
+
 import './config/firebase-config.ts'
 
 import LoginSuccess from './components/LoginSuccess.tsx';
 import TestAddEvent from './components/TestAddEvent.tsx';
 
+import DodajIzdelek from './components/DodajIzdelek.tsx';
+import Cart from './components/Cart.tsx';
+import Kosarica from './components/Kosarica.tsx';
+import IzdelekDetails from './components/IzdelekDetails.tsx';
 
 const router = createBrowserRouter([
   {
@@ -22,8 +27,54 @@ const router = createBrowserRouter([
     element:  <App />
   },
   {
-    path: "/izdelki",
-    element: <Izdelki />
+    path: '/izdelki',
+    element: (
+      <>
+        <Navbar />
+        <Izdelki />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: '/izdelki/:id',
+    element: (
+      <>
+        <Navbar />
+        <IzdelekDetails  />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: '/dodajIzdelek',
+    element: (
+      <>
+        <Navbar />
+        <DodajIzdelek />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: '/kosarica',
+    element: (
+      <>
+        <Navbar />
+        <Kosarica />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: '/cart',
+    element: (
+      <>
+        <Navbar />
+        <Cart />
+        <Footer />
+      </>
+    ),
   },
   {
     path: "/room/:roomId",

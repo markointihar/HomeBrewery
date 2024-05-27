@@ -21,24 +21,29 @@ export default function Navbar(){
     return (
         <div className="navbar">
             <img src={beer} alt='beer'/>
-            
-
-            
             <div className='nav-items' >
                 <div className="item" onClick={createRoom}>
                     Pomoč
                 </div>
-                
+                <div className="item">
+                    prvi
+                </div>
                 <div className="item">
                     <Link to={'/'} >
                         Home
                     </Link>
-                </div>
-                
-                
+                </div>             
                 <div className="item" onClick={handleLogin}>
                     Login
                 </div>
+                <div className="item">
+                    <Link to="/izdelki">Trgovina</Link>
+                </div>
+                <div className="item">
+                    <Link to="/kosarica">Košarica</Link>
+                </div>
+                
+                
             </div>
             <img src={pfp}/>
             

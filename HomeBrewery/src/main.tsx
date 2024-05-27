@@ -10,6 +10,11 @@ import Navbar from './components/Navbar.tsx';
 import ChatRoom from './components/ChatRoom.tsx';
 import Footer from './components/Footer.tsx';
 import Izdelki from './components/Izdelki.tsx';
+import './config/firebase-config.ts'
+
+import LoginSuccess from './components/LoginSuccess.tsx';
+import TestAddEvent from './components/TestAddEvent.tsx';
+
 
 const router = createBrowserRouter([
   {
@@ -23,6 +28,14 @@ const router = createBrowserRouter([
   {
     path: "/room/:roomId",
     element: [<Navbar />, <ChatRoom />, <Footer /> ]
+  },
+  {
+    path: "/login-success",
+    element: <LoginSuccess />
+  },
+  {
+    path: "/dodaj",
+    element: <TestAddEvent />
   }
 ])
 

@@ -8,6 +8,7 @@ import '../css/telo.css'
 import { useEffect, useRef, useState } from 'react';
 
 
+
 const steps = [
     "Korak 1: Pripravi sestavine - slad, hmelj, kvas in vodo. Skrbno izberi kakovostne surovine, ki bodo tvorile osnovo tvojega piva. Slad, hmelj in kvas so kot mojstri svojega rokodelstva, vsak s svojim značajem in vlogo, medtem ko je voda tista, ki jih združi v harmonično celoto, kot dirigent v simfoničnem orkestru.",
     "Korak 2: Zmešaj slad z vročo vodo za izdelavo slada. Kot alkimist iz antičnih časov, združi slad z vročo vodo in s tem ustvariš tekočino, ki nosi v sebi esenco preteklosti in obet prihodnosti. Ta proces sproži reakcije, ki bodo obogatile okus in aromo tvojega piva.",
@@ -81,7 +82,6 @@ export default function Home(){
 
     return (
         <div className="telo">
-
             <h1>Homebrewery</h1>
             <div className="home-container">
               <img src={wheat} alt="Wheat" />

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import beer from '../assets/beer.svg';
 import pfp from '../assets/profile.svg'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, redirect, useNavigate } from 'react-router-dom';
 
 export default function Navbar(){
     const [roomLink, setRoomLink] = useState('');
@@ -14,6 +14,9 @@ export default function Navbar(){
         navigate(`/room/${data.roomId}`);
     };
 
+    const handleLogin =  () => {
+        window.location.href = 'http://localhost:3000/login';
+    }
     
     return (
         <div className="navbar">
@@ -33,8 +36,8 @@ export default function Navbar(){
                 </div>
                 
                 
-                <div className="item">
-                    prvi
+                <div className="item" onClick={handleLogin}>
+                    Login
                 </div>
             </div>
             <img src={pfp}/>

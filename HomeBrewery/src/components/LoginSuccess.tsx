@@ -8,9 +8,9 @@ const LoginSuccess = () => {
 
     useEffect(() => {
         const params = new URLSearchParams(location.search);
-        const token = params.get('token');
-        if (token) {
-            sessionStorage.setItem('authToken', token);
+        const email = params.get('email');
+        if (email) {
+            sessionStorage.setItem('authToken', email);
             navigate('/');
         }
     }, [location, history]);

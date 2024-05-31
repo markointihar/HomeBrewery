@@ -1,0 +1,62 @@
+/* RightSidebar Styles */
+
+.right-sidebar {
+    width: 20%; /* Set the width to match the left sidebar */
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 20px; /* Adjust margin to space it from the main content */
+}
+
+.right-sidebar .add-topic-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: wheat;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.right-sidebar .add-topic-btn:hover {
+    background-color: #5e3370;
+}
+
+.right-sidebar h2 {
+    margin-top: 0;
+    font-size: 1.2em;
+    color: wheat;
+}
+
+.right-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.right-sidebar ul li {
+    margin: 10px 0;
+    font-weight: bold;
+    color: wheat;
+}
+
+.right-sidebar ul li a {
+    text-decoration: none;
+    color: wheat;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.right-sidebar ul li a:hover {
+    color: wheat;
+}
+
+.right-sidebar ul li a::before {
+    content: '•';
+    margin-right: 10px;
+    font-size: 1.5em;
+    line-height: 0;
+}

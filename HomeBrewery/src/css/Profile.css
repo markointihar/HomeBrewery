@@ -1,0 +1,124 @@
+/* Profile Page Styles */
+
+.container {
+    display: flex;
+    margin: 20px;
+}
+
+.sidebar {
+    width: 20%;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    color: wheat;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: wheat;
+    font-weight: bold;
+}
+
+.content {
+    width: 75%;
+}
+
+.profile {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info h2 {
+    margin: 0;
+}
+
+.profile-posts h3 {
+    margin-top: 0;
+}
+
+.post {
+    display: flex;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border-left: 4px solid wheat; /* Added left border to match the image */
+}
+
+.vote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.upvote, .downvote {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.upvote {
+    color: #ff4500;
+}
+
+.downvote {
+    color: #7193ff;
+}
+
+.post-content h4 {
+    margin: 0;
+    font-size: 1.25em;
+    color: #333;
+}
+
+.post-content p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.post-content .comments a {
+    color: wheat;
+    text-decoration: none;
+}
+
+.post-content .comments a:hover {
+    text-decoration: underline;
+}

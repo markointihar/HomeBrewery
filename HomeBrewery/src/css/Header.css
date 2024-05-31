@@ -1,0 +1,43 @@
+/* Header Styles */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(248, 192, 88); /* Updated color to match the image */
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow for better visual separation */
+}
+
+.logo {
+    font-size: 1.5em;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.search-bar {
+    flex-grow: 1;
+    margin: 0 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 1em;
+}
+
+.login-logout {
+    display: flex;
+    align-items: center;
+}
+
+.login-logout a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 20px;
+}

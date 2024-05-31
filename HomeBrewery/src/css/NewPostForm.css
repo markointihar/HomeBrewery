@@ -1,0 +1,56 @@
+/* Main form container */
+.new-post-form {
+    background-color: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form title */
+.new-post-form h2 {
+    margin-bottom: 30px; /* Increased bottom margin for more space */
+    font-size: 24px;
+    color: #ffcc80; /* Match the yellow color */
+}
+
+/* Form group */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Labels */
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Input fields */
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Submit button */
+.form-group button {
+    background-color: #ffcc80; /* Match the yellow color */
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Submit button hover effect */
+.form-group button:hover {
+    background-color: #ffa726; /* Slightly darker yellow */
+}

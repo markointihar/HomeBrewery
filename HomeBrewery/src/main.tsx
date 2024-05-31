@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Profiler } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
@@ -18,6 +18,12 @@ import DodajIzdelek from './components/DodajIzdelek.tsx';
 import Cart from './components/Cart.tsx';
 import Kosarica from './components/Kosarica.tsx';
 import IzdelekDetails from './components/IzdelekDetails.tsx';
+import Header from './components/Header.tsx';
+import HomeForum from './components/HomeForum.tsx';
+import Profile from './components/Profile.tsx';
+import Popular from './components/Popular.tsx';
+import NewPostForm from './components/NewPostForm.tsx';
+import PostPage from './components/PostPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -85,7 +91,27 @@ const router = createBrowserRouter([
   {
     path: "/dodaj",
     element: <TestAddEvent />
-  }
+  },
+  {
+    path: "/forum",
+    element: [<Header/>,<HomeForum/>]
+  },
+  {
+    path: "/forumProfile",
+    element: [<Header/>,<Profile/>]
+  },
+  {
+    path: "/popularPosts",
+    element: [<Header/>,<Popular/>]
+  },
+  {
+    path:"/newPost",
+    element: [<Header/>,<NewPostForm/>]
+  },
+  {
+    path: "/posts/:postId", // Define postId as a route parameter
+    element: [<Header/>,<PostPage/>]
+}
 ])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

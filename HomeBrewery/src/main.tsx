@@ -24,6 +24,7 @@ import Profile from './components/Profile.tsx';
 import Popular from './components/Popular.tsx';
 import NewPostForm from './components/NewPostForm.tsx';
 import PostPage from './components/PostPage.tsx';
+import Profil from './components/Profil.tsx';
 
 const router = createBrowserRouter([
   {
@@ -111,7 +112,10 @@ const router = createBrowserRouter([
   {
     path: "/posts/:postId", // Define postId as a route parameter
     element: [<Header/>,<PostPage/>]
-}
+  },
+  {
+    path: "/profil",
+    element: <Profil />}
 ])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

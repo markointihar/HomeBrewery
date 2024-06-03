@@ -47,6 +47,8 @@ export default function Profil() {
             console.log(response);
             sessionStorage.removeItem('authToken');
         })
+        // refresh page
+        window.location.reload();
     }
 
     const handleReceptStanje = () => {

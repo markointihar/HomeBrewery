@@ -1,12 +1,15 @@
-// src/components/RightSidebar.tsx
-
 import React from 'react';
 import '../css/RightSidebar.css';
+import '../css/globalDark.css';
 
 const RightSidebar: React.FC = () => {
+    const handleNewTopicClick = () => {
+        window.location.href = '/newPost';
+    };
+
     return (
         <aside className="right-sidebar">
-            <button className="add-topic-btn">Start a New Topic</button>
+            <button className="add-topic-btn" onClick={handleNewTopicClick}>Start a New Topic</button>
             <h2>Top Users</h2>
             <ul>
                 <li>Himanshu</li>

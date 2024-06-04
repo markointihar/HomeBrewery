@@ -54,6 +54,14 @@ export default function Navbar() {
         >
           Košarica
         </div>
+        <div
+          className="item"
+          onClick={() =>
+            (window.location.href = "http://localhost:5173/forum")
+          }
+        >
+          Forum
+        </div>
 
         {sessionStorage.getItem("authToken") === null && (
           <div className="item" onClick={handleLogin}>

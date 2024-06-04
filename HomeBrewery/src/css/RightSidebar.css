@@ -8,10 +8,9 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-left: 20px; /* Adjust margin to space it from the main content */
 }
-
 .right-sidebar .add-topic-btn {
     display: block;
-    width: 100%;
+    width: calc(100% - 40px); /* Adjust width to accommodate padding */
     padding: 10px;
     margin-bottom: 20px;
     background-color: wheat;
@@ -22,7 +21,7 @@
 }
 
 .right-sidebar .add-topic-btn:hover {
-    background-color: #5e3370;
+    background-color: #fcd36a;
 }
 
 .right-sidebar h2 {

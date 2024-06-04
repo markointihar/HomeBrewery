@@ -1,43 +1,74 @@
-.navbar{
-    display:flex;
-    flex-direction:row;
-    align-items: center;
-    height: 100px;
-    background-color: #e5b05c;
-    width: 100%;
-      margin: 0;
-      padding: 0;
-  }
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 80px;
+  background-color: #e5b05c;
+  width: 100%;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar > img {
+  height: 70px;
+  padding: 0 20px;
+}
+
+.item > a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  flex-grow: 1;
+  gap: 2rem;
+  height: 100%;
+}
+
+.nav-items > .item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: transparent; /* Removed background color for seamless integration */
+  border: none; /* Removed border */
+  position: relative; /* Added for underline hover effect */
+  transition: color 0.3s ease-in-out;
+  cursor: pointer; /* Added cursor pointer */
+}
+
+.nav-items > .item:after {
+  content: ""; /* Empty content for underline */
+  position: absolute; /* Positions the underline */
+  width: 0%; /* Initial width of underline (0%) */
+  height: 2px; /* Height of the underline */
+  background-color: #ffffff; /* Matches hover color */
+  bottom: 0; /* Positions underline at the bottom */
+  left: 50%; /* Centers the underline horizontally */
+  transform: translateX(-50%); /* Aligns underline with button content */
+  transition: width 0.3s ease-in-out; /* Transition for underline animation */
+}
+
+.nav-items > .item:hover {
+  color: #e6e6e6; /* Text color changes to hover color */
+  /* Removed transform and background-color transition from .item hover for seamless integration */
+}
+
+.nav-items > .item:hover:after {
+  width: 100%; /* Underline expands to full width on hover */
+}
+
+.nav-items > .item.active {
+  color: #e6e6e6; /* Text color for active page (same as hover) */
+  /* Removed transform and background-color transition to avoid conflicts */
   
-  .navbar  > img {
-    height: 100%;
-  }
-  .item > a {
-    text-decoration: none;
-    color: black;
-  }
-  
-  .nav-items {
-    display:flex;
-    flex-direction:row;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-    gap: 2rem;
-    height: 100%;
-  }
-  
-  .nav-items > .item {
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-    height: 100%;
-  }
-  
-  .navbar > img:hover {
-    background-color: #ddb771;
-  }
-  .nav-items > .item:hover {
-    background-color: #e2aa50;
-  }
+  /* Add underline styling for active page */
+  text-decoration: underline;
+  text-underline-position: under; /* Ensures underline appears below the text */
+}

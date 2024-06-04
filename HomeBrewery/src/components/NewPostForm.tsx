@@ -6,14 +6,30 @@ import '../css/NewPostForm.css';
 const NewPostForm: React.FC = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const [user_id, setUserID] = useState('');
+
+    
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
         try {
+
+            const google_id = sessionStorage.getItem("authToken");
+    const userResponse = await axios.get("http://localhost:3000/get-user-id", {
+      params: {
+        google_id: google_id,
+      },
+    });
+    const user_id = userResponse.data.id;
+
+    setUserID(user_id)
+
+    
             await axios.post('http://localhost:3000/api/posts', {
                 title,
-                content
+                content,
+                user_id
             });
             setTitle('');
             setContent('');

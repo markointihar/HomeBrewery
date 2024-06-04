@@ -22,6 +22,9 @@ import Popular from "./components/Popular.tsx";
 import NewPostForm from "./components/NewPostForm.tsx";
 import PostPage from "./components/PostPage.tsx";
 import Profil from "./components/Profil.tsx";
+import { DarkModeProvider } from './components/DarkModeProvider.tsx';
+import MyComponent from "./components/MyComponent.tsx";
+// import "./css/global.css" 
 
 const router = createBrowserRouter([
   {
@@ -114,10 +117,16 @@ const router = createBrowserRouter([
     path: "/profil",
     element: [<Navbar />, <Profil />, <Footer />],
   },
+  {
+    path: "test",
+    element: [<Header/>,<MyComponent/>]
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
+    <DarkModeProvider>
     <RouterProvider router={router} />
+    </DarkModeProvider>
   </React.StrictMode>,
 );

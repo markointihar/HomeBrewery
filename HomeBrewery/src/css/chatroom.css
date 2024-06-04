@@ -4,9 +4,9 @@
     flex-direction: column;
     margin: 2rem;
     padding: 20px;
-    background-color: #073b3a;
+    background-color: #faedcd;
     height: 70vh;
-    border-radius: 20px;
+    box-shadow: 0.1rem 0.1rem 1.5rem rgba(0, 0, 0, 0.3);
 }
 
 .sporocila {
@@ -18,7 +18,7 @@
   }
 
 .your-message, .other-message{
-    border-radius: 20px;
+    border-radius: 10px;
     height: auto;
     display: flex;
     justify-content: center;
@@ -30,12 +30,13 @@
     word-wrap: break-word;
 }
 .your-message {
-    background-color: #08a045;
+    background-color: #ccd5ae;
     align-self: flex-end;
 }
 .other-message {
-    background-color: #6bbf59;
+    background-color: #e9edc9;
     align-self: flex-start;
+    
 }
 
 
@@ -58,7 +59,7 @@
     padding: 10px;
     border-radius: 20px;
     border: none;
-    background-color: #08a045;
+    background-color: #d4a373;
     color: white;
     cursor: pointer;
     width: 8%;

@@ -1,38 +1,35 @@
-import React, { Profiler } from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Navbar from './components/Navbar.tsx';
-import ChatRoom from './components/ChatRoom.tsx';
-import Footer from './components/Footer.tsx';
-import Izdelki from './components/Izdelki.tsx';
+import React, { Profiler } from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.tsx";
+import "./index.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Navbar from "./components/Navbar.tsx";
+import ChatRoom from "./components/ChatRoom.tsx";
+import Footer from "./components/Footer.tsx";
+import Izdelki from "./components/Izdelki.tsx";
 
-import LoginSuccess from './components/LoginSuccess.tsx';
-import TestAddEvent from './components/TestAddEvent.tsx';
+import LoginSuccess from "./components/LoginSuccess.tsx";
+import TestAddEvent from "./components/TestAddEvent.tsx";
 
-import DodajIzdelek from './components/DodajIzdelek.tsx';
-import Cart from './components/Cart.tsx';
-import Kosarica from './components/Kosarica.tsx';
-import IzdelekDetails from './components/IzdelekDetails.tsx';
-import Header from './components/Header.tsx';
-import HomeForum from './components/HomeForum.tsx';
-import Profile from './components/Profile.tsx';
-import Popular from './components/Popular.tsx';
-import NewPostForm from './components/NewPostForm.tsx';
-import PostPage from './components/PostPage.tsx';
-import Profil from './components/Profil.tsx';
+import DodajIzdelek from "./components/DodajIzdelek.tsx";
+import Cart from "./components/Cart.tsx";
+import Kosarica from "./components/Kosarica.tsx";
+import IzdelekDetails from "./components/IzdelekDetails.tsx";
+import Header from "./components/Header.tsx";
+import HomeForum from "./components/HomeForum.tsx";
+import Profile from "./components/Profile.tsx";
+import Popular from "./components/Popular.tsx";
+import NewPostForm from "./components/NewPostForm.tsx";
+import PostPage from "./components/PostPage.tsx";
+import Profil from "./components/Profil.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:  <App />
+    element: <App />,
   },
   {
-    path: '/izdelki',
+    path: "/izdelki",
     element: (
       <>
         <Navbar />
@@ -42,17 +39,17 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/izdelki/:id',
+    path: "/izdelki/:id",
     element: (
       <>
         <Navbar />
-        <IzdelekDetails  />
+        <IzdelekDetails />
         <Footer />
       </>
     ),
   },
   {
-    path: '/dodajIzdelek',
+    path: "/dodajIzdelek",
     element: (
       <>
         <Navbar />
@@ -62,7 +59,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/kosarica',
+    path: "/kosarica",
     element: (
       <>
         <Navbar />
@@ -72,7 +69,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/cart',
+    path: "/cart",
     element: (
       <>
         <Navbar />
@@ -83,43 +80,44 @@ const router = createBrowserRouter([
   },
   {
     path: "/room/:roomId",
-    element: [<Navbar />, <ChatRoom />, <Footer /> ]
+    element: [<Navbar />, <ChatRoom />, <Footer />],
   },
   {
     path: "/login-success",
-    element: <LoginSuccess />
+    element: <LoginSuccess />,
   },
   {
     path: "/dodaj",
-    element: <TestAddEvent />
+    element: [<TestAddEvent />, <Footer />],
   },
   {
     path: "/forum",
-    element: [<Header/>,<HomeForum/>]
+    element: [<Header />, <HomeForum />],
   },
   {
     path: "/forumProfile",
-    element: [<Header/>,<Profile/>]
+    element: [<Header />, <Profile />],
   },
   {
     path: "/popularPosts",
-    element: [<Header/>,<Popular/>]
+    element: [<Header />, <Popular />],
   },
   {
-    path:"/newPost",
-    element: [<Header/>,<NewPostForm/>]
+    path: "/newPost",
+    element: [<Header />, <NewPostForm />],
   },
   {
     path: "/posts/:postId", // Define postId as a route parameter
-    element: [<Header/>,<PostPage/>]
+    element: [<Header />, <PostPage />],
   },
   {
     path: "/profil",
-    element: <Profil />}
-])
+    element: [<Navbar />, <Profil />, <Footer />],
+  },
+]);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>,
-)
+);

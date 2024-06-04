@@ -30,42 +30,36 @@ const DodajIzdelek: React.FC = () => {
       });
   }, []);
 
-  useEffect(() => {
-    axios.get('http://localhost:3000/api/dodajIzdelek')
-      .then(response => {
-        setKategorije(response.data.kategorije);
-      })
-      .catch(error => {
-        console.error('Prišlo je do napake pri pridobivanju podatkov:', error);
-      });
-  }, []);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const novIzdelek = { 
-      naziv, 
-      cena: parseFloat(cena), 
-      opis, 
-      zaloga: parseInt(zaloga), 
-      slika,
-      kategorija_id
-    };
     
-    axios.post('http://localhost:3000/api/izdelki', novIzdelek)
-      .then(response => {
-        setMessage('Izdelek uspešno dodan!');
-        setNaziv('');
-        setCena('');
-        setOpis('');
-        setZaloga('');
-        setKategorijaId(null);
-        setSlika(null);
-      })
-      .catch(error => {
-        console.error('Prišlo je do napake pri dodajanju izdelka:', error);
-        setMessage('Napaka pri dodajanju izdelka.');
-      });
-      
+    const formData = new FormData();
+    formData.append('naziv', naziv);
+    formData.append('cena', cena);
+    formData.append('opis', opis);
+    formData.append('zaloga', zaloga);
+    formData.append('kategorija_id', kategorija_id);
+    formData.append('slika', slika); // Dodamo sliko v FormData
+    
+    axios.post('http://localhost:3000/api/izdelki', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    .then(response => {
+      console.log('Dodan izdelek response:', response.data);
+      setMessage('Izdelek uspešno dodan!');
+      setNaziv('');
+      setCena('');
+      setOpis('');
+      setZaloga('');
+      setKategorijaId(null);
+      setSlika(null);
+    })
+    .catch(error => {
+      console.error('Prišlo je do napake pri dodajanju izdelka:', error);
+      setMessage('Napaka pri dodajanju izdelka.');
+    });
   };
 
   return (
@@ -86,7 +80,6 @@ const DodajIzdelek: React.FC = () => {
           <label htmlFor="cena">Cena:</label>
           <input
             type="number"
-            step="0.01"
             id="cena"
             value={cena}
             onChange={(e) => setCena(e.target.value)}

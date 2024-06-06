@@ -132,3 +132,16 @@
     border-left: 1px solid #f0f0f0;
     padding-left: 10px;
 }
+
+.comment-user {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-content {
+    padding: 10px;
+}
+
+.comment {
+    margin-bottom: 1rem;
+}

@@ -1,6 +1,13 @@
 /* src/css/izdelki.css */
 .izdelki-container {
   display: flex;
+  width: 100%;
+}
+
+.izdelek-content {
+  width: 100%;
+  padding: 20px;
+  display: flex;
 }
 
 .sidebar {
@@ -9,9 +16,10 @@
   border-right: 1px solid #ddd;
 }
 
-.izdelki-content {
-  flex-grow: 1;
-  padding: 20px;
+.izdelki {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .izdelek {
@@ -19,6 +27,10 @@
   padding: 15px;
   margin: 10px 0;
   border-radius: 5px;
+  width: 30%;
+  margin: 1rem;
+  background-color: #faedcd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .izdelek h2 {
@@ -27,4 +39,9 @@
 
 .izdelek p {
   margin: 5px 0;
+}
+
+a > img {
+  width: 100%;
+  border-radius: 5px;
 }

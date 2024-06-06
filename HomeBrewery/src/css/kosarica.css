@@ -1,0 +1,33 @@
+.kosarica-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.izdelkii-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.izdelekk {
+    display: flex;
+    width: 70%;
+    background-color: #faedcd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 1rem;
+}
+
+.izdelek-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    width: fit-content;
+    width: 30%;
+}
+
+.izdelek-child > img {
+    width: 90%;
+    border-radius: 5px;
+}

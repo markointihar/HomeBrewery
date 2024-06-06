@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../css/kosarica.css';
 
 interface Izdelek {
   id: number;
@@ -55,7 +56,6 @@ const handlePurchase = async () => {
     for (const izdelek of kosarica) {
       await purchaseIzdelek(izdelek.id);
     }
-    alert('Nakup uspešno potrjen');
     setKosarica([]);
     sessionStorage.removeItem('cart');
   };
@@ -71,18 +71,24 @@ const handlePurchase = async () => {
         <p>Vaša košarica je prazna.</p>
       ) : (
         <>
-          <ul>
+          <div className='izdelkii-container'>
             {kosarica.map((izdelek, index) => (
-              <li key={index}>
-                <h2>{izdelek.naziv}</h2>
-                {izdelek.slika && <img src={`http://localhost:3000/uploads/${izdelek.slika}`} alt={izdelek.naziv} />}
-                <p>Cena: {izdelek.cena} EUR</p>
-                <p>Opis: {izdelek.opis}</p>
-                <button onClick={() => removeFromCart(izdelek.id)}>Odstrani</button>
-                <button onClick={() => purchaseIzdelek(izdelek.id)}>Kupi</button>
-              </li>
+              <div className='izdelekk' key={index}>
+                <div className='izdelek-child'>
+                  <h2>{izdelek.naziv}</h2>
+                  {izdelek.slika && <img src={`http://localhost:3000/uploads/${izdelek.slika}`} alt={izdelek.naziv} />}
+                </div>
+                <div className='izdelek-child'>
+                  <p>Cena: {izdelek.cena} EUR</p>
+                  <p>Opis: {izdelek.opis}</p>
+                </div>
+                <div className='izdelek-child'>
+                  <button onClick={() => removeFromCart(izdelek.id)}>Odstrani</button>
+                </div>
+                
+              </div>
             ))}
-          </ul>
+          </div>
           <p>Skupna cena: {totalCena} EUR</p>
           <button onClick={confirmPurchase}>Potrdi nakup</button>
         </>

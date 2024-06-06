@@ -58,7 +58,6 @@ const handleCategoryChange = (id: number) => {
     const cart = JSON.parse(sessionStorage.getItem('cart') || '[]');
     cart.push(izdelek);
     sessionStorage.setItem('cart', JSON.stringify(cart));
-    alert(`Izdelek "${izdelek.naziv}" je bil dodan v košarico.`);
   };
 
   const filteredIzdelki = izdelki.filter(izdelek => 
@@ -87,9 +86,9 @@ const handleCategoryChange = (id: number) => {
       </div>
       <div className="izdelki-content">
         <h1>Seznam izdelkov</h1>
-        <ul>
+        <div className='izdelki'>
           {filteredIzdelki.map((izdelek, index) => (
-            <li key={index} className="izdelek">
+            <div key={index} className="izdelek">
               <Link to={`/izdelki/${izdelek.id}`}>
                 <h2>{izdelek.naziv}</h2>
                 {izdelek.slika && <img src={`http://localhost:3000/uploads/${izdelek.slika}`} alt={izdelek.naziv} />} {/* Posodobljeno: pravilna sestava URL-ja */}
@@ -99,9 +98,9 @@ const handleCategoryChange = (id: number) => {
               <p>Zaloga: {izdelek.zaloga}</p>
               <p>Kategorija: {izdelek.ime_kategorije}</p>
               <button onClick={() => addToCart(izdelek)}>Dodaj v košarico</button>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );

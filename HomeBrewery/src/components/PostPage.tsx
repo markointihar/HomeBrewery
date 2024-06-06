@@ -66,6 +66,7 @@ const PostPage: React.FC = () => {
             const response = await axios.get(`http://localhost:3000/api/posts/${postId}/comments`);
             setComments(response.data);
             setCommentCount(response.data.length);
+            console.log(response.data);
         } catch (error) {
             console.error('There was an error fetching comments!', error);
         }
@@ -73,8 +74,17 @@ const PostPage: React.FC = () => {
 
     const handleCommentSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        
+        const google_id = sessionStorage.getItem("authToken");
+        const userResponse = await axios.get("http://localhost:3000/get-user-id", {
+        params: {
+            google_id: google_id,
+        },
+    });
+    const user_id = userResponse.data.id;
+
         try {
-            await axios.post(`http://localhost:3000/api/posts/${postId}/comments`, { content: newComment });
+            await axios.post(`http://localhost:3000/api/posts/${postId}/comments`, { content: newComment, user_id: user_id, postId: postId});
             setNewComment('');
             fetchComments(); // Fetch comments again to update the list and comment count
         } catch (error) {
@@ -110,12 +120,18 @@ const PostPage: React.FC = () => {
                 <div className="comments-section">
                     <div className="comments-header">
                         <span className="comments-count">{commentCount}</span>
-                        <h3>Comments</h3>
+                        <h2>Comments</h2>
                     </div>
                     <div className="comment-list">
                         {comments.map(comment => (
                             <div key={comment.id} className="comment">
-                                <p>{comment.content}</p>
+                                <div className='comment-user'>
+                                    <img src={comment.profile_picture} alt="User profile" />
+                                    <span>{comment.name}</span>
+                                </div>
+                                <div className='comment-content'>
+                                    <p>{comment.content}</p>
+                                </div>
                                 {/* Add reply functionality here */}
                             </div>
                         ))}

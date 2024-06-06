@@ -1,44 +1,81 @@
-import React from 'react';
-import '../css/Popular.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import '../css/Home.css';
 import Sidebar from '../components/Sidebar';
 import '../css/Container.css';
+import '../css/globalDark.css';
 import RightSidebar from '../components/RightSidebar';
+import { useDarkMode } from '../components/DarkModeProvider.tsx'; // Import useDarkMode hook
 
+// Define the Post interface
+interface Post {
+    id: number;
+    title: string;
+    content: string;
+    created_at: string;
+    upvotes: number;
+    downvotes: number;
+    comments_count: number;
+    score: number;
+}
 
-const Popular: React.FC = () => {
+const HomeForum: React.FC = () => {
+    const [posts, setPosts] = useState<Post[]>([]);
+
+    useEffect(() => {
+        fetchPosts();
+    }, []);
+
+    const fetchPosts = async () => {
+        try {
+            const response = await axios.get<Post[]>('http://localhost:3000/api/posts');
+            const postsWithScore = response.data.map((post) => ({
+                ...post,
+                score: post.upvotes - post.downvotes
+            }));
+
+            // Sort posts by score in descending order
+            const sortedPosts = postsWithScore.sort((a, b) => b.score - a.score);
+            setPosts(sortedPosts);
+        } catch (error) {
+            console.error('There was an error fetching the posts!', error);
+        }
+    };
+
+    const handleVote = async (postId: number, type: 'upvote' | 'downvote') => {
+        try {
+            await axios.post(`http://localhost:3000/api/posts/${postId}/${type}`);
+            fetchPosts(); // Refetch posts to update the list and scores
+        } catch (error) {
+            console.error(`There was an error ${type === 'upvote' ? 'upvoting' : 'downvoting'} the post!`, error);
+        }
+    };
+
     return (
         <div className="containerr">
             <Sidebar />
             <main className="contentt">
                 <h2>Trenutno popularno</h2>
-                <div className="post">
-                    <div className="vote">
-                        <button className="upvote">▲</button>
-                        <span className="score">200</span>
-                        <button className="downvote">▼</button>
+                {posts.map((post) => (
+                    <div key={post.id} className="post">
+                        <div className="vote">
+                            <button className="upvote" onClick={() => handleVote(post.id, 'upvote')}>▲</button>
+                            <span className="score">{post.score}</span>
+                            <button className="downvote" onClick={() => handleVote(post.id, 'downvote')}>▼</button>
+                        </div>
+                        <div className="post-content">
+                            <Link to={`/posts/${post.id}`} className="post-title">{post.title}</Link> {/* Wrap the title in a Link */}
+                            <p>{new Date(post.created_at).toLocaleString()}</p>
+                            <p>{post.content}</p>
+                            <p className="comments">Comments: {post.comments_count}</p>
+                        </div>
                     </div>
-                    <div className="post-content">
-                        <h2><a href="#">Najboljši načini za fermentacijo</a></h2>
-                        <p>Objavljeno 25.5.2024 | Piwko</p>
-                        <p className="comments"><a href="#">20 komentarjev</a></p>
-                    </div>
-                </div>
-                <div className="post">
-                    <div className="vote">
-                        <button className="upvote">▲</button>
-                        <span className="score">180</span>
-                        <button className="downvote">▼</button>
-                    </div>
-                    <div className="post-content">
-                        <h2><a href="#">Moj recept za IPA</a></h2>
-                        <p>Objavljeno 20.5.2024 | goatedBrewer</p>
-                        <p className="comments"><a href="#">15 komentarjev</a></p>
-                    </div>
-                </div>
+                ))}
             </main>
             <RightSidebar />
         </div>
     );
 };
 
-export default Popular;
+export default HomeForum;

@@ -92,6 +92,15 @@ header {
     flex-grow: 1; /* Ensure it takes the remaining space */
 }
 
+.dropdown-menu .profile-banner .profile-info .email {
+    font-size: 13px; /* Adjust font size */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis if text overflows */
+    white-space: nowrap; /* Prevent text from wrapping */
+    color: #555; /* Adjust color if needed */
+}
+
+
 .dropdown-menu .profile-banner .profile-info .name {
     font-weight: bold;
     white-space: nowrap; /* Prevents text from wrapping */

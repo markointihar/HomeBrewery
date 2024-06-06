@@ -24,6 +24,7 @@ import PostPage from "./components/PostPage.tsx";
 import Profil from "./components/Profil.tsx";
 import { DarkModeProvider } from './components/DarkModeProvider.tsx';
 import MyComponent from "./components/MyComponent.tsx";
+
 // import "./css/global.css" 
 
 const router = createBrowserRouter([

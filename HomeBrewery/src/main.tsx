@@ -24,6 +24,7 @@ import PostPage from "./components/PostPage.tsx";
 import Profil from "./components/Profil.tsx";
 import { DarkModeProvider } from './components/DarkModeProvider.tsx';
 import MyComponent from "./components/MyComponent.tsx";
+import SearchResults from "./components/SearchResults.tsx";
 
 // import "./css/global.css" 
 
@@ -121,6 +122,10 @@ const router = createBrowserRouter([
   {
     path: "test",
     element: [<Header/>,<MyComponent/>]
+  },
+  {
+    path: "/search",
+    element: [<Header/>,<SearchResults/>]
   }
 ]);
 

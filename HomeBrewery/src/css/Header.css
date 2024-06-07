@@ -18,16 +18,27 @@ header {
 .search-bar {
     flex-grow: 0;
     margin: 0 20px;
-    width: 300px; /* Adjusted width for smaller search bar */
+    width: 300px;
+    position: relative; /* Added relative positioning */
 }
 
 .search-bar input {
     width: 100%;
-    padding: 8px;
+    padding: 8px 32px 8px 8px; /* Adjusted padding to make space for the button */
     border-radius: 20px;
     border: none;
     outline: none;
     font-size: 1em;
+}
+
+.search-button {
+    position: absolute; 
+    right: -129px; /* Adjusted right positioning */
+    top: -12px; /* Centered vertically */
+    transform: translateY(-50%); /* Centered vertically */
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }
 
 .login-logout {
@@ -223,6 +234,10 @@ input:checked + .slider:before {
 
 .dark-mode-text {
     margin-right: auto; /* Adjust margin as needed */
+}
+
+.magn_glass {
+    width: 25px;
 }
 
 /* Adjust the position of the slider */

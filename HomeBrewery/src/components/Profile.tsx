@@ -5,6 +5,15 @@ import Sidebar from '../components/Sidebar';
 import '../css/Container.css';
 import RightSidebar from '../components/RightSidebar';
 
+interface Post {
+    id: number;
+    title: string;
+    content: string;
+    created_at: string;
+    score: number;
+    commentsCount: number;
+}
+
 const Profile: React.FC = () => {
     const [userData, setUserData] = useState({
         name: '',
@@ -13,6 +22,7 @@ const Profile: React.FC = () => {
         upvotes: 0,
         profilePicture: ''
     });
+    const [latestPosts, setLatestPosts] = useState<Post[]>([]);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -37,7 +47,21 @@ const Profile: React.FC = () => {
             }
         };
 
+        const fetchPosts = async () => {
+            try {
+                const response = await axios.get('http://localhost:3000/api/posts');
+                const postsWithScore = response.data.map((post: any) => ({
+                    ...post,
+                    score: post.upvotes - post.downvotes
+                }));
+                setLatestPosts(postsWithScore.slice(0, 3)); // Get the latest 3 posts
+            } catch (error) {
+                console.error('There was an error fetching the posts!', error);
+            }
+        };
+
         fetchUserData();
+        fetchPosts();
     }, []);
 
     return (
@@ -56,7 +80,7 @@ const Profile: React.FC = () => {
                     </div>
                 </section>
             </main>
-            <RightSidebar />
+            <RightSidebar latestPosts={latestPosts} />
         </div>
     );
 };

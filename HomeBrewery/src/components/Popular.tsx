@@ -68,12 +68,12 @@ const HomeForum: React.FC = () => {
                             <Link to={`/posts/${post.id}`} className="post-title">{post.title}</Link> {/* Wrap the title in a Link */}
                             <p>{new Date(post.created_at).toLocaleString()}</p>
                             <p>{post.content}</p>
-                            <p className="comments">Comments: {post.comments_count}</p>
+                        
                         </div>
                     </div>
                 ))}
             </main>
-            <RightSidebar />
+            {/* <RightSidebar latestPosts={[]} /> */}
         </div>
     );
 };

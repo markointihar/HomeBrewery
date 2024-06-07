@@ -1,12 +1,10 @@
 // Header.tsx
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDarkMode } from './DarkModeProvider'; 
 import '../css/Header.css';
 import '../css/globalDark.css';
 import pfp from "../assets/profile.svg";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
 const Header: React.FC = () => {
@@ -17,6 +15,8 @@ const Header: React.FC = () => {
         userEmail: '',
         userPfp: ''
     });
+    const [searchQuery, setSearchQuery] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (sessionStorage.getItem('authToken')) {
@@ -57,12 +57,29 @@ const Header: React.FC = () => {
         window.location.href = "/";
     };
 
+    const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const handleSearch = () => {
+        navigate(`/search?query=${searchQuery}`);
+    };
+
     return (
         <header>
             <Link to="/" className="logo">HomeBrewery Forum</Link>
             <div className="search-bar">
-                <input type="text" placeholder="Search topics..." />
-            </div>
+    <input
+        type="text"
+        placeholder="Išči po temah..."
+        value={searchQuery}
+        onChange={handleSearchInputChange}
+    />
+    <button className="search-button" onClick={handleSearch}>
+        <img className ="magn_glass" src="../src/search-512.webp" alt="Search" />
+    </button> {/* Added button inside the input */}
+</div>
+
             {
                 sessionStorage.getItem("authToken") === null && (
                     <div className="login-logout" onClick={handleLogin}>
@@ -83,7 +100,7 @@ const Header: React.FC = () => {
                                         <div className="email">{userData.userEmail}</div>
                                     </div>
                                 </div>
-                                <Link to="/profile">Profile</Link>
+                                <Link to="/profil">Profile</Link>
                                 <div className="dark-mode-toggle">
                                     <label className="switch">
                                         <input type="checkbox" checked={darkMode} readOnly />

@@ -5,6 +5,14 @@ import Sidebar from '../components/Sidebar';
 import RightSidebar from '../components/RightSidebar';
 import '../css/PostPage.css';
 
+interface Post {
+    id: number;
+    title: string;
+    content: string;
+    created_at: string;
+    score: number;
+    commentsCount: number;
+}
 
 const PostPage: React.FC = () => {
     const { postId } = useParams<{ postId: string }>();
@@ -13,49 +21,31 @@ const PostPage: React.FC = () => {
     const [newComment, setNewComment] = useState('');
     const [commentCount, setCommentCount] = useState(0);
     const [score, setScore] = useState(0);
+    const [latestPosts, setLatestPosts] = useState<Post[]>([]);
 
     useEffect(() => {
         fetchPost();
         fetchComments();
+        fetchLatestPosts();
     }, []);
 
     const fetchPost = async () => {
         try {
             const response = await axios.get(`http://localhost:3000/api/posts/${postId}`);
-            console.log(response)
             setPost(response.data);
-
             const score = response.data.upvotes - response.data.downvotes;
-
             setScore(score);
-
-            // const postsWithScore = response.data.map((post: any) => ({
-            //     ...post,
-            //     score: post.upvotes - post.downvotes
-            // }));
-            // setPost(postsWithScore);
         } catch (error) {
             console.error('There was an error fetching the post!', error);
         }
     };
+
     const handleVote = async (postId: number, type: 'upvote' | 'downvote') => {
         try {
-            await axios.post(`http://localhost:3000/api/posts/${postId}/${type}`)
+            await axios.post(`http://localhost:3000/api/posts/${postId}/${type}`);
             const response = await axios.get(`http://localhost:3000/api/posts/${postId}`);
-            console.log(response)
-            // setPost(response.data);
-
             const score = response.data.upvotes - response.data.downvotes;
-
             setScore(score);
-           
-            // setPost((prevPosts) =>
-            //     prevPosts.map((post) =>
-            //         post.id === postId
-            //             ? { ...post, score: type === 'upvote' ? post.score + 1 : post.score - 1 }
-            //             : post
-            //     )
-            // );
         } catch (error) {
             console.error(`There was an error ${type === 'upvote' ? 'upvoting' : 'downvoting'} the post!`, error);
         }
@@ -66,7 +56,6 @@ const PostPage: React.FC = () => {
             const response = await axios.get(`http://localhost:3000/api/posts/${postId}/comments`);
             setComments(response.data);
             setCommentCount(response.data.length);
-            console.log(response.data);
         } catch (error) {
             console.error('There was an error fetching comments!', error);
         }
@@ -74,17 +63,14 @@ const PostPage: React.FC = () => {
 
     const handleCommentSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        
         const google_id = sessionStorage.getItem("authToken");
         const userResponse = await axios.get("http://localhost:3000/get-user-id", {
-        params: {
-            google_id: google_id,
-        },
-    });
-    const user_id = userResponse.data.id;
+            params: { google_id: google_id },
+        });
+        const user_id = userResponse.data.id;
 
         try {
-            await axios.post(`http://localhost:3000/api/posts/${postId}/comments`, { content: newComment, user_id: user_id, postId: postId});
+            await axios.post(`http://localhost:3000/api/posts/${postId}/comments`, { content: newComment, user_id: user_id, postId: postId });
             setNewComment('');
             fetchComments(); // Fetch comments again to update the list and comment count
         } catch (error) {
@@ -92,7 +78,18 @@ const PostPage: React.FC = () => {
         }
     };
 
-    
+    const fetchLatestPosts = async () => {
+        try {
+            const response = await axios.get('http://localhost:3000/api/posts');
+            const postsWithScore = response.data.map((post: any) => ({
+                ...post,
+                score: post.upvotes - post.downvotes
+            }));
+            setLatestPosts(postsWithScore.slice(0, 3)); // Get the latest 3 posts
+        } catch (error) {
+            console.error('There was an error fetching the posts!', error);
+        }
+    };
 
     return (
         <div className="containerPost">
@@ -132,7 +129,6 @@ const PostPage: React.FC = () => {
                                 <div className='comment-content'>
                                     <p>{comment.content}</p>
                                 </div>
-                                {/* Add reply functionality here */}
                             </div>
                         ))}
                     </div>
@@ -148,7 +144,7 @@ const PostPage: React.FC = () => {
                     </div>
                 </div>
             </main>
-            <RightSidebar />
+            <RightSidebar latestPosts={latestPosts} />
         </div>
     );
 };

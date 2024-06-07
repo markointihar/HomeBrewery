@@ -9,7 +9,7 @@ const Sidebar: React.FC = () => {
             <ul>
                 <li><Link to="/forum">Domov</Link></li>
                 <li><Link to="/popularPosts">Popularno</Link></li>
-                <li><Link to="/forumProfile">Profil</Link></li>
+                {/* <li><Link to="/forumProfile">Profil</Link></li> */}
             </ul>
         </aside>
     );

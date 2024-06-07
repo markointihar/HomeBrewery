@@ -1,10 +1,10 @@
 import { useState } from "react";
 import beer from "../assets/beer.svg";
 import pfp from "../assets/profile.svg";
-import { Link, redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
-  const [roomLink, setRoomLink] = useState("");
+  const [, setRoomLink] = useState("");
   const navigate = useNavigate();
 
   const createRoom = async () => {

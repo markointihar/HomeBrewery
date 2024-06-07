@@ -1,11 +1,10 @@
 import wheat from '../assets/wheat.svg'
 import mirrorWheat from '../assets/mirrorWheat.svg'
-import beer from '../assets/beer.svg';
-import pfp from '../assets/profile.svg'
-import beer1 from '../assets/beer1.svg';
 import '../css/telo.css'
+import wheatbackground from '../assets/wheat.jpg'
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -18,20 +17,11 @@ const steps = [
     "Korak 6: Fermentiraj pri ustrezni temperaturi, dokler pivo ni pripravljeno. Kot čuvaj, ki bedi nad svojim zakladom, skrbno nadziraj temperaturo in pusti kvasu, da opravi svoje delo. Ta čas fermentacije je kot čas razmisleka - potreben je mir in potrpežljivost, da se razvije prava globina okusa.",
     "Korak 7: Stekleniči pivo in ga pusti, da dozori. Kot arhivar, ki zapisuje zgodovino, stekleniči pivo in ga pusti, da dozori v svojem času. Vsaka steklenička je kot dragocen spomin na trenutek, ko si rojen, in čas bo pokazal, kako se bo razvil in kako bo zorel v letih, ki prihajajo."
   ];
-  
-
-  const images = [
-    wheat,
-    mirrorWheat,
-    beer,
-    pfp,
-    beer1
-];
-  
 
 export default function Home(){
 
     const sectionsRef = useRef<(HTMLElement | null)[]>([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -57,32 +47,25 @@ export default function Home(){
           });
         };
       }, []);
-    
 
 
-
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    const moveSlide = (n:any) => {
-        setCurrentIndex((prevIndex) => (prevIndex + n + images.length) % images.length);
+    const createRoom = async () => {
+      const response = await fetch("http://localhost:3000/create-room");
+      const data = await response.json();
+      navigate(`/room/${data.roomId}`);
     };
-
-    const getVisibleImages = () => {
-        const prevIndex = (currentIndex - 1 + images.length) % images.length;
-        const nextIndex = (currentIndex + 1) % images.length;
-
-        return [
-            images[prevIndex],
-            images[currentIndex],
-            images[nextIndex]
-        ];
-    };
-
-    const visibleImages = getVisibleImages();
 
     return (
         <div className="telo">
-            <h1>Homebrewery</h1>
+              <div className="image-container">
+                <img src={wheatbackground} alt="Your Alt Text" className="background-image" />
+                <div className='overlay-text'>
+                  <h1>Homebrewery</h1>
+                  <h2>Homebrewing je umetnost in znanost priprave lastnega piva doma. Ta proces vključuje več korakov, vsak s svojimi tehnikami in posebnostmi, ki prispevajo k končnemu okusu in značaju piva.</h2>
+                  <h2>Brskajte po <Link to="/forum">forumu</Link>, <Link to="/izdelki">kupujte</Link> potrebne pripomočke in surovine, <Link to="/dodaj">planirajte svoj Homebrew</Link>  ter, če ste v dvomih vprašajte za <Link to="" onClick={createRoom}>pomoč</Link></h2>
+                </div>
+                
+                </div>
             <div className="home-container">
               <img src={wheat} alt="Wheat" />
               <div className='top-div'>
@@ -102,19 +85,6 @@ export default function Home(){
                         <p>{step}</p>
                     </div>
                 ))}
-            </div>
-
-    
-
-            <h1>Galerija</h1>
-            <div className="carousel-container">
-              <div className="carousel-slide">
-                {visibleImages.map((src, index) => (
-                  <img key={index} src={src} alt={`Slika ${index + 1}`} />
-                ))}
-              </div>
-              <button className="prev" onClick={() => moveSlide(-1)}>&#10094;</button>
-              <button className="next" onClick={() => moveSlide(1)}>&#10095;</button>
             </div>
 
         </div>

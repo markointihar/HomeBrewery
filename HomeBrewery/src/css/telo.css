@@ -55,45 +55,57 @@ p{
   font-size: 20px;
 }
 
-.carousel-container {
-    margin: 2rem;
-    width: 60%;
-    overflow: hidden;
+
+  .image-container {
     position: relative;
+    width: 100%; /* Adjust as needed */
+
   }
-  
-  .carousel-slide {
-    display: flex;
+
+  .image-container > img {
+    opacity: 0.7; /* Adjust the transparency */
+    filter: sepia(50%) brightness(70%);
   }
+
   
-  .carousel-slide img {
-    width: 30%;
+  .background-image {
+    width: 100%;
     height: auto;
-    margin: 0 10px;
+    
   }
   
-  .prev, .next {
-    cursor: pointer;
+  .overlay-text {
     position: absolute;
     top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -22px;
-    font-weight: bold;
-    font-size: 18px;
-    background-color: #e5b05c;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    white-space: nowrap; /* Prevents text from wrapping */
+    white-space: normal; /* Allow text to wrap */
+  word-wrap: break-word; /* Break long words */
+  word-break: break-word; /* Ensure long words break */
   }
-  
-  .next {
-    right: 0;
-    border-radius: 20px;
+
+  .overlay-text > h1{
+    color:white;
   }
-  
-  .prev {
-    left: 0;
-    border-radius: 20px;
+
+  .overlay-text > h2 > a {
+    color:#faedcd;
   }
-  
-  .prev:hover, .next:hover {
-    background-color: #ddb771
+
+  @media only screen and (max-width: 800px){
+    .overlay-text > h1{
+      font-size: 1rem;
+    }
+    .overlay-text > h2 {
+      font-size: 1rem;;
+    }
+    .overlay-text {
+      width: 90%
+    }
+
+    .home-container > img {
+      display: none;
+    }
   }

@@ -1,5 +1,4 @@
 import '../css/profil.css';
-import pfp from '../assets/profile.svg'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 

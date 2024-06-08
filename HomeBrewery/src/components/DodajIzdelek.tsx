@@ -17,7 +17,7 @@ const DodajIzdelek: React.FC = () => {
   const [slika, setSlika] = useState<File | null>(null);
   const [kategorija_id, setKategorijaId] = useState<number | null>(null);
   const [kategorije, setKategorije] = useState<Kategorija[]>([]);
-  const [message, setMessage] = useState('');
+  const [, setMessage] = useState('');
 
 
   useEffect(() => {
@@ -38,9 +38,10 @@ const DodajIzdelek: React.FC = () => {
     formData.append('cena', cena);
     formData.append('opis', opis);
     formData.append('zaloga', zaloga);
-    formData.append('kategorija_id', kategorija_id);
-    formData.append('slika', slika); // Dodamo sliko v FormData
-    
+    formData.append('kategorija_id', kategorija_id?.toString() || '');
+    if (slika){
+      formData.append('slika', slika);
+    }
     axios.post('http://localhost:3000/api/izdelki', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'

@@ -5,8 +5,7 @@ import '../css/Home.css';
 import Sidebar from '../components/Sidebar';
 import '../css/Container.css';
 import '../css/globalDark.css';
-import RightSidebar from '../components/RightSidebar';
-import { useDarkMode } from '../components/DarkModeProvider.tsx'; // Import useDarkMode hook
+
 
 // Define the Post interface
 interface Post {

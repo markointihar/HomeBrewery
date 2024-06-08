@@ -120,7 +120,7 @@ export default function Profil() {
                         <>
                             {
                                 !isExpanded &&
-                                <div key={index} className={`recept ${isExpanded}`} onClick={(event) => handleReceptKlik(index)}>
+                                <div key={index} className={`recept ${isExpanded}`} onClick={() => handleReceptKlik(index)}>
                                 <h2>{recept.naziv}</h2>
                                 <p>Voda: {recept.voda_litrov} l</p>
                                 <p>Slad: {recept.slad_kg} kg</p>
@@ -139,7 +139,7 @@ export default function Profil() {
                             }
                             {
                                 isExpanded &&
-                                <div key={index} className={`recept ${isExpanded}`} onClick={(event) => handleReceptKlik(index)}>
+                                <div key={index} className={`recept ${isExpanded}`} onClick={() => handleReceptKlik(index)}>
                                     <h1>{recept.naziv}</h1>
                                     <h2>Sterilizacija</h2>
                                     <p>

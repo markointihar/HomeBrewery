@@ -2,16 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../css/NewPostForm.css';
 import Sidebar  from '../components/Sidebar';
-import RightSidebar  from '../components/RightSidebar';
 import '../css/Home.css';
 import '../css/Container.css';
 import '../css/globalDark.css';
-import { useDarkMode } from '../components/DarkModeProvider.tsx';
 
 const NewPostForm: React.FC = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
-    const [user_id, setUserID] = useState('');
+    const [, setUserID] = useState('');
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();

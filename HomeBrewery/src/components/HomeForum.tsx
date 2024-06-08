@@ -6,7 +6,7 @@ import Sidebar from '../components/Sidebar';
 import '../css/Container.css';
 import '../css/globalDark.css';
 import RightSidebar from '../components/RightSidebar';
-import { useDarkMode } from '../components/DarkModeProvider.tsx'; // Import useDarkMode hook
+
 
 interface Post {
     id: number;
@@ -19,7 +19,6 @@ interface Post {
 
 const HomeForum: React.FC = () => {
     const [posts, setPosts] = useState<Post[]>([]);
-    const [commentCount, setCommentCount] = useState(0);
 
     useEffect(() => {
         fetchPosts();

@@ -15,7 +15,7 @@ export default function Navbar() {
   };
 
   const handleLogin = () => {
-    window.location.href = "https://home-brewery.vercel.app/login";
+    window.location.href = "https://home-brewery-server.vercel.app/login";
   };
 
   const ustvariRecept = () => {

@@ -21,7 +21,7 @@ const DodajIzdelek: React.FC = () => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/dodajIzdelek')
+    axios.get('https://home-brewery-server.vercel.app/api/dodajIzdelek')
       .then(response => {
         setKategorije(response.data.kategorije);
       })
@@ -42,7 +42,7 @@ const DodajIzdelek: React.FC = () => {
     if (slika){
       formData.append('slika', slika);
     }
-    axios.post('http://localhost:3000/api/izdelki', formData, {
+    axios.post('https://home-brewery-server.vercel.app/api/izdelki', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }

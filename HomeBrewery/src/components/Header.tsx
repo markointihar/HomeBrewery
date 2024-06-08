@@ -20,7 +20,7 @@ const Header: React.FC = () => {
 
     useEffect(() => {
         if (sessionStorage.getItem('authToken')) {
-            axios.get('http://localhost:3000/get-user', {
+            axios.get('https://home-brewery-server.vercel.app/get-user', {
                 params: {
                     google_id: sessionStorage.getItem('authToken')
                 }
@@ -40,7 +40,7 @@ const Header: React.FC = () => {
     }, []);
 
     const handleLogin = () => {
-        window.location.href = "http://localhost:3000/login";
+        window.location.href = "https://home-brewery-server.vercel.app/login";
     };
 
     const toggleDropdown = () => {

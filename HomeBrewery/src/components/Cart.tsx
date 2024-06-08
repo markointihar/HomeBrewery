@@ -16,7 +16,7 @@ const Cart: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/cart')
+    axios.get('https://home-brewery-server.vercel.app/api/cart')
       .then(response => {
         setCartItems(response.data);
       })

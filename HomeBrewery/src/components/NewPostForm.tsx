@@ -16,7 +16,7 @@ const NewPostForm: React.FC = () => {
 
         try {
             const google_id = sessionStorage.getItem("authToken");
-            const userResponse = await axios.get("http://localhost:3000/get-user-id", {
+            const userResponse = await axios.get("https://home-brewery-server.vercel.app/get-user-id", {
                 params: {
                     google_id: google_id,
                 },
@@ -24,7 +24,7 @@ const NewPostForm: React.FC = () => {
             const user_id = userResponse.data.id;
             setUserID(user_id);
 
-            await axios.post('http://localhost:3000/api/posts', {
+            await axios.post('https://home-brewery-server.vercel.app/api/posts', {
                 title,
                 content,
                 user_id

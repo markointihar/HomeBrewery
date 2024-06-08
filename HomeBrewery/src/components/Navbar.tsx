@@ -8,18 +8,18 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const createRoom = async () => {
-    const response = await fetch("http://localhost:3000/create-room");
+    const response = await fetch("https://home-brewery-server.vercel.app/create-room");
     const data = await response.json();
     setRoomLink(data.link);
     navigate(`/room/${data.roomId}`);
   };
 
   const handleLogin = () => {
-    window.location.href = "http://localhost:3000/login";
+    window.location.href = "https://home-brewery.vercel.app/login";
   };
 
   const ustvariRecept = () => {
-    window.location.href = "http://localhost:5173/dodaj";
+    window.location.href = "https://home-brewery.vercel.app/dodaj";
   };
 
   return (
@@ -34,14 +34,14 @@ export default function Navbar() {
         </div>
         <div
           className="item"
-          onClick={() => (window.location.href = "http://localhost:5173")}
+          onClick={() => (window.location.href = "https://home-brewery.vercel.app")}
         >
           Domov
         </div>
         <div
           className="item"
           onClick={() =>
-            (window.location.href = "http://localhost:5173/izdelki")
+            (window.location.href = "https://home-brewery.vercel.app/izdelki")
           }
         >
           Trgovina
@@ -49,7 +49,7 @@ export default function Navbar() {
         <div
           className="item"
           onClick={() =>
-            (window.location.href = "http://localhost:5173/kosarica")
+            (window.location.href = "https://home-brewery.vercel.app/kosarica")
           }
         >
           Košarica
@@ -57,7 +57,7 @@ export default function Navbar() {
         <div
           className="item"
           onClick={() =>
-            (window.location.href = "http://localhost:5173/forum")
+            (window.location.href = "https://home-brewery.vercel.app/forum")
           }
         >
           Forum
@@ -73,7 +73,7 @@ export default function Navbar() {
         <img
           src={pfp}
           onClick={() =>
-            (window.location.href = "http://localhost:5173/profil")
+            (window.location.href = "https://home-brewery.vercel.app/profil")
           }
         />
       )}

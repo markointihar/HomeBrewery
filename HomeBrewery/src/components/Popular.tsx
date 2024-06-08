@@ -28,7 +28,7 @@ const HomeForum: React.FC = () => {
 
     const fetchPosts = async () => {
         try {
-            const response = await axios.get<Post[]>('http://localhost:3000/api/posts');
+            const response = await axios.get<Post[]>('https://home-brewery-server.vercel.app/api/posts');
             const postsWithScore = response.data.map((post) => ({
                 ...post,
                 score: post.upvotes - post.downvotes
@@ -44,7 +44,7 @@ const HomeForum: React.FC = () => {
 
     const handleVote = async (postId: number, type: 'upvote' | 'downvote') => {
         try {
-            await axios.post(`http://localhost:3000/api/posts/${postId}/${type}`);
+            await axios.post(`https://home-brewery-server.vercel.app/api/posts/${postId}/${type}`);
             fetchPosts(); // Refetch posts to update the list and scores
         } catch (error) {
             console.error(`There was an error ${type === 'upvote' ? 'upvoting' : 'downvoting'} the post!`, error);

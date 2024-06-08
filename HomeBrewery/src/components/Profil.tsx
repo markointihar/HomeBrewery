@@ -12,7 +12,7 @@ export default function Profil() {
     const [postStanje, setPostStanje] = useState(false);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/get-user', {
+        axios.get('https://home-brewery-server.vercel.app/get-user', {
             params: {
                 google_id: sessionStorage.getItem('authToken')
             }
@@ -26,7 +26,7 @@ export default function Profil() {
                 console.error(error);
             });
 
-        axios.get('http://localhost:3000/moji-recepti', {
+        axios.get('https://home-brewery-server.vercel.app/moji-recepti', {
             params: {
                 google_id: sessionStorage.getItem('authToken')
             }
@@ -41,7 +41,7 @@ export default function Profil() {
     }, []);
 
     const odjava = () => {
-        axios.get('http://localhost:3000/logout')
+        axios.get('https://home-brewery-server.vercel.app/logout')
         .then(response => {
             console.log(response);
             sessionStorage.removeItem('authToken');
@@ -70,7 +70,7 @@ export default function Profil() {
             sessionStorage.getItem('authToken') === null &&
             <>
                 <h1>Prosim prijavi se</h1>
-                <a href='http://localhost:3000/login'>Prijava </a>         
+                <a href='https://home-brewery-server.vercel.app/login'>Prijava </a>         
             </>
 
         }

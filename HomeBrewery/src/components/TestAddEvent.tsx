@@ -24,7 +24,7 @@ export default function TestAddEvent() {
     event.preventDefault();
 
     const google_id = sessionStorage.getItem("authToken");
-    const userResponse = await axios.get("http://localhost:3000/get-user-id", {
+    const userResponse = await axios.get("https://home-brewery-server.vercel.app/get-user-id", {
       params: {
         google_id: google_id,
       },
@@ -36,7 +36,7 @@ export default function TestAddEvent() {
     };
 
     await axios
-      .get("http://localhost:3000/dodaj-dogodek", {
+      .get("https://home-brewery-server.vercel.app/dodaj-dogodek", {
         params: {
           cas_fermentacije_dni: recept.cas_fermentacije_dni,
           cas_karbonizacije_dni: recept.cas_karbonizacije_dni,
@@ -50,7 +50,7 @@ export default function TestAddEvent() {
         console.error(error);
       });
     await axios
-      .post("http://localhost:3000/shrani-recept", vsiPodatki, {
+      .post("https://home-brewery-server.vercel.app/shrani-recept", vsiPodatki, {
         headers: {
           "Content-Type": "application/json",
         },

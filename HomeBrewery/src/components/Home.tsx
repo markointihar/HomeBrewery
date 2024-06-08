@@ -50,7 +50,7 @@ export default function Home(){
 
 
     const createRoom = async () => {
-      const response = await fetch("http://localhost:3000/create-room");
+      const response = await fetch("https://home-brewery-server.vercel.app/create-room");
       const data = await response.json();
       navigate(`/room/${data.roomId}`);
     };

@@ -76,7 +76,7 @@ const Header: React.FC = () => {
         onChange={handleSearchInputChange}
     />
     <button className="search-button" onClick={handleSearch}>
-        <img className ="magn_glass" src="../src/search-512.webp" alt="Search" />
+        <img className ="magn_glass" src="../assets/search-512.webp" alt="Search" />
     </button> {/* Added button inside the input */}
 </div>
 

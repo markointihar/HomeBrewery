@@ -10,16 +10,15 @@ interface Kategorija {
 }
 
 const DodajIzdelek: React.FC = () => {
-  const [izdelek, setIzdelek] = useState({
-    naziv: '',
-    cena: '',
-    opis: '',
-    zaloga: '',
-    slikaUrl: '',
-    kategorija_id: null,
-  });
+  const [naziv, setNaziv] = useState('');
+  const [cena, setCena] = useState('');
+  const [opis, setOpis] = useState('');
+  const [zaloga, setZaloga] = useState('');
+  const [slikaUrl, setSlikaUrl] = useState('');
+  const [kategorija_id, setKategorijaId] = useState<number | null>(null);
   const [kategorije, setKategorije] = useState<Kategorija[]>([]);
   const [, setMessage] = useState('');
+
 
   useEffect(() => {
     axios.get('https://home-brewery-server.vercel.app/api/dodajIzdelek')
@@ -31,39 +30,41 @@ const DodajIzdelek: React.FC = () => {
       });
   }, []);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = event.target;
-    setIzdelek(prevState => ({
-      ...prevState,
-      [name]: name === 'kategorija_id' ? Number(value) : value,
-    }));
-  };
-
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Izdelek, ki se doda: ',izdelek)
-    axios.post('https://home-brewery-server.vercel.app/api/izdelki', izdelek, {
+    
+    const formData = new FormData();
+    formData.append('naziv', naziv);
+    formData.append('cena', cena);
+    formData.append('opis', opis);
+    formData.append('zaloga', zaloga);
+    formData.append('slika', slikaUrl);
+    if (kategorija_id !== null) {
+      formData.append('kategorija_id', kategorija_id.toString());
+    }
+
+    axios.post('https://home-brewery-server.vercel.app/api/izdelki', formData, {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'multipart/form-data'
       }
     })
     .then(response => {
       console.log('Dodan izdelek response:', response.data);
       setMessage('Izdelek uspešno dodan!');
-      setIzdelek({
-        naziv: '',
-        cena: '',
-        opis: '',
-        zaloga: '',
-        slikaUrl: '',
-        kategorija_id: null,
-      });
+      setNaziv('');
+      setCena('');
+      setOpis('');
+      setZaloga('');
+      setKategorijaId(null);
+      setSlikaUrl('');
     })
     .catch(error => {
       console.error('Prišlo je do napake pri dodajanju izdelka:', error);
       setMessage('Napaka pri dodajanju izdelka.');
     });
   };
+
 
   return (
     <div className="dodaj-izdelek-container">
@@ -74,9 +75,8 @@ const DodajIzdelek: React.FC = () => {
           <input
             type="text"
             id="naziv"
-            name="naziv"
-            value={izdelek.naziv}
-            onChange={handleChange}
+            value={naziv}
+            onChange={(e) => setNaziv(e.target.value)}
             required
           />
         </div>
@@ -85,9 +85,8 @@ const DodajIzdelek: React.FC = () => {
           <input
             type="number"
             id="cena"
-            name="cena"
-            value={izdelek.cena}
-            onChange={handleChange}
+            value={cena}
+            onChange={(e) => setCena(e.target.value)}
             required
           />
         </div>
@@ -95,9 +94,8 @@ const DodajIzdelek: React.FC = () => {
           <label htmlFor="opis">Opis:</label>
           <textarea
             id="opis"
-            name="opis"
-            value={izdelek.opis}
-            onChange={handleChange}
+            value={opis}
+            onChange={(e) => setOpis(e.target.value)}
             required
           ></textarea>
         </div>
@@ -106,21 +104,14 @@ const DodajIzdelek: React.FC = () => {
           <input
             type="number"
             id="zaloga"
-            name="zaloga"
-            value={izdelek.zaloga}
-            onChange={handleChange}
+            value={zaloga}
+            onChange={(e) => setZaloga(e.target.value)}
             required
           />
         </div>
         <div className="form-group">
           <label htmlFor="kategorija_id">Kategorija:</label>
-          <select
-            id="kategorija_id"
-            name="kategorija_id"
-            value={izdelek.kategorija_id || ''}
-            onChange={handleChange}
-            required
-          >
+          <select value={kategorija_id || ''} onChange={(e) => setKategorijaId(Number(e.target.value))} required>
             <option value="">Izberi kategorijo</option>
             {kategorije.map(kategorija => (
               <option key={kategorija.id} value={kategorija.id}>{kategorija.ime}</option>
@@ -128,13 +119,12 @@ const DodajIzdelek: React.FC = () => {
           </select>
         </div>
         <div className="form-group">
-          <label htmlFor="slikaUrl">URL slike:</label>
+        <label htmlFor="slikaUrl">URL slike:</label>
           <input
             type="text"
             id="slikaUrl"
-            name="slikaUrl"
-            value={izdelek.slikaUrl}
-            onChange={handleChange}
+            value={slikaUrl}
+            onChange={(e) => setSlikaUrl(e.target.value)}
             required
           />
         </div>

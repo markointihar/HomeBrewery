@@ -87,7 +87,6 @@ const handleCategoryChange = (id: number) => {
               <p>Cena: {izdelek.cena} EUR</p>
               <p>Opis: {izdelek.opis}</p>
               <p>Zaloga: {izdelek.zaloga}</p>
-              <p>Kategorija: {izdelek.ime_kategorije}</p>
               <button onClick={() => addToCart(izdelek)}>Dodaj v košarico</button>
             </div>
           ))}

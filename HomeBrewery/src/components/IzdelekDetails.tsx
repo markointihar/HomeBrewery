@@ -48,7 +48,6 @@ const IzdelekDetails: React.FC = () => {
         <p>Cena: {izdelek.cena} EUR</p>
         <p>Opis: {izdelek.opis}</p>
         <p>Zaloga: {izdelek.zaloga}</p>
-        <p>Kategorija: {izdelek.ime_kategorije}</p>
         <button onClick={addToCart}>
           Dodaj v košarico
         </button>

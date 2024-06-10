@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import '../css/chatroom.css'
 
+
+
 interface ChatroomProps {
   ablyClient: any;
 }
@@ -28,7 +30,7 @@ const ChatRoom = ({ablyClient} : ChatroomProps) => {
       return () => {
           channel.unsubscribe();
       };
-  }, [ablyClient, roomId, isConnected]);
+  }, [ablyClient, roomId, username, isConnected]);
 
   const sendMessage = () => {
       const channel = ablyClient.channels.get(`room-${roomId}`);
@@ -45,16 +47,14 @@ const ChatRoom = ({ablyClient} : ChatroomProps) => {
           <h1>Chat Room</h1>
           <p>Napiši username in počakaj da se ti pridruži strokovnjak</p>
           <div className='sporocila'>
-            {messages.map((msg, index) => {
-              const isCurrentUserMessage = msg.startsWith(`${username}:`); // Preveri, ali je sporočilo poslano od trenutnega uporabnika
-              const className = isCurrentUserMessage ? 'your-message' : 'other-message';
-              const displayedName = isCurrentUserMessage ? 'You' : msg.split(':')[0]; // Prikaži 'You' namesto uporabniškega imena, če je sporočilo poslano od trenutnega uporabnika
-              return (
-                <div className={className} key={index}>
-                  {displayedName}: {msg.split(':')[1]}
-                </div>
-              );
-            })}
+              {messages.map((msg, index) => {
+                  const className = msg.startsWith('You:') ? 'your-message' : 'other-message';
+                  return (
+                      <div className={className} key={index}>
+                          {msg}
+                      </div>
+                  );
+              })}
           </div>
           <div className='forma'>
               {!isConnected && (

@@ -129,3 +129,34 @@ body.dark-mode .comment-form button {
     background-color: #f8c058;
     color: #fff;
 }
+
+body.dark-mode .new-post-form {
+    background-color: #2e2e2e;
+    border: 1px solid #444;
+    color: #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .new-post-form h2 {
+    color: #f8c058; /* Yellow color */
+}
+
+body.dark-mode .form-group label {
+    color: #ccc;
+}
+
+body.dark-mode .form-group input[type="text"],
+body.dark-mode .form-group textarea {
+    background-color: #444;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+body.dark-mode .form-group button {
+    background-color: #f8c058; /* Yellow color */
+    color: #fff;
+}
+
+body.dark-mode .form-group button:hover {
+    background-color: #ffa726; /* Slightly darker yellow */
+}

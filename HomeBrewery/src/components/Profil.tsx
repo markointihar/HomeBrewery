@@ -12,7 +12,7 @@ export default function Profil() {
     const [postStanje, setPostStanje] = useState(false);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/get-user', {
+        axios.get('https://home-brewery-server.vercel.app/get-user', {
             params: {
                 google_id: sessionStorage.getItem('authToken')
             }
@@ -26,7 +26,7 @@ export default function Profil() {
                 console.error(error);
             });
 
-        axios.get('http://localhost:3000/moji-recepti', {
+        axios.get('https://home-brewery-server.vercel.app/moji-recepti', {
             params: {
                 google_id: sessionStorage.getItem('authToken')
             }
@@ -41,7 +41,7 @@ export default function Profil() {
     }, []);
 
     const odjava = () => {
-        axios.get('http://localhost:3000/logout')
+        axios.get('https://home-brewery-server.vercel.app/logout')
         .then(response => {
             console.log(response);
             sessionStorage.removeItem('authToken');
@@ -70,7 +70,7 @@ export default function Profil() {
             sessionStorage.getItem('authToken') === null &&
             <>
                 <h1>Prosim prijavi se</h1>
-                <a href='http://localhost:3000/login'>Prijava </a>         
+                <a href='https://home-brewery-server.vercel.app/login'>Prijava </a>         
             </>
 
         }
@@ -120,7 +120,7 @@ export default function Profil() {
                         <>
                             {
                                 !isExpanded &&
-                                <div key={index} className={`recept ${isExpanded}`} onClick={(event) => handleReceptKlik(index)}>
+                                <div key={index} className={`recept ${isExpanded}`} onClick={() => handleReceptKlik(index)}>
                                 <h2>{recept.naziv}</h2>
                                 <p>Voda: {recept.voda_litrov} l</p>
                                 <p>Slad: {recept.slad_kg} kg</p>
@@ -139,7 +139,7 @@ export default function Profil() {
                             }
                             {
                                 isExpanded &&
-                                <div key={index} className={`recept ${isExpanded}`} onClick={(event) => handleReceptKlik(index)}>
+                                <div key={index} className={`recept ${isExpanded}`} onClick={() => handleReceptKlik(index)}>
                                     <h1>{recept.naziv}</h1>
                                     <h2>Sterilizacija</h2>
                                     <p>

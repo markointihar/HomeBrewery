@@ -26,7 +26,7 @@ const Izdelki: React.FC = () => {
   const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/izdelki')
+    axios.get('https://home-brewery-server.vercel.app/api/izdelki')
     .then(response => {
       const data = response.data.izdelki.map((izdelek: any) => {
         const decoder = new TextDecoder('utf-8');
@@ -91,7 +91,7 @@ const handleCategoryChange = (id: number) => {
             <div key={index} className="izdelek">
               <Link to={`/izdelki/${izdelek.id}`}>
                 <h2>{izdelek.naziv}</h2>
-                {izdelek.slika && <img src={`http://localhost:3000/uploads/${izdelek.slika}`} alt={izdelek.naziv} />} {/* Posodobljeno: pravilna sestava URL-ja */}
+                {izdelek.slika && <img src={`https://home-brewery-server.vercel.app/uploads/${izdelek.slika}`} alt={izdelek.naziv} />} {/* Posodobljeno: pravilna sestava URL-ja */}
               </Link>
               <p>Cena: {izdelek.cena} EUR</p>
               <p>Opis: {izdelek.opis}</p>

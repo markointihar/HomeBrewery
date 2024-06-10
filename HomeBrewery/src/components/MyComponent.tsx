@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { useDarkMode } from './DarkModeProvider'; // Import useDarkMode hook
 
 const MyComponent = () => {

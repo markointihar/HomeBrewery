@@ -24,7 +24,7 @@ const SearchResults: React.FC = () => {
         const fetchData = async () => {
             try {
                 if (query) {
-                    const response = await axios.get<Post[]>(`http://localhost:3000/api/search?query=${query}`);
+                    const response = await axios.get<Post[]>(`https://home-brewery-server.vercel.app/api/search?query=${query}`);
                     setPosts(response.data);
                 }
             } catch (error) {

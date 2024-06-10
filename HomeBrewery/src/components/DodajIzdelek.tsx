@@ -17,11 +17,11 @@ const DodajIzdelek: React.FC = () => {
   const [slika, setSlika] = useState<File | null>(null);
   const [kategorija_id, setKategorijaId] = useState<number | null>(null);
   const [kategorije, setKategorije] = useState<Kategorija[]>([]);
-  const [message, setMessage] = useState('');
+  const [, setMessage] = useState('');
 
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/dodajIzdelek')
+    axios.get('https://home-brewery-server.vercel.app/api/dodajIzdelek')
       .then(response => {
         setKategorije(response.data.kategorije);
       })
@@ -38,10 +38,11 @@ const DodajIzdelek: React.FC = () => {
     formData.append('cena', cena);
     formData.append('opis', opis);
     formData.append('zaloga', zaloga);
-    formData.append('kategorija_id', kategorija_id);
-    formData.append('slika', slika); // Dodamo sliko v FormData
-    
-    axios.post('http://localhost:3000/api/izdelki', formData, {
+    formData.append('kategorija_id', kategorija_id?.toString() || '');
+    if (slika){
+      formData.append('slika', slika);
+    }
+    axios.post('https://home-brewery-server.vercel.app/api/izdelki', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }

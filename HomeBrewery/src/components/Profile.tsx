@@ -27,7 +27,7 @@ const Profile: React.FC = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/get-user', {
+                const response = await axios.get('https://home-brewery-server.vercel.app/get-user', {
                     params: {
                         google_id: sessionStorage.getItem('authToken')
                     }
@@ -49,7 +49,7 @@ const Profile: React.FC = () => {
 
         const fetchPosts = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/posts');
+                const response = await axios.get('https://home-brewery-server.vercel.app/api/posts');
                 const postsWithScore = response.data.map((post: any) => ({
                     ...post,
                     score: post.upvotes - post.downvotes

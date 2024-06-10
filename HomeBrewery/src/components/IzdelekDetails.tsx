@@ -21,7 +21,7 @@ const IzdelekDetails: React.FC = () => {
   const [izdelek, setIzdelek] = useState<Izdelek | null>(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/izdelki/${id}`)
+    axios.get(`https://home-brewery-server.vercel.app/api/izdelki/${id}`)
       .then(response => {
         
         console.log(response.data.slika.data)
@@ -50,7 +50,7 @@ const IzdelekDetails: React.FC = () => {
     <div className="izdelek-details">
       <div className='izdelek-card'>
         <h1>{izdelek.naziv}</h1>
-        {izdelek.slika && <img src={`http://localhost:3000/uploads/${izdelek.slika}`} alt={izdelek.naziv} />} {/* Posodobljeno: pravilna sestava URL-ja */}
+        {izdelek.slika && <img src={`https://home-brewery-server.vercel.app/uploads/${izdelek.slika}`} alt={izdelek.naziv} />} {/* Posodobljeno: pravilna sestava URL-ja */}
         <p>Cena: {izdelek.cena} EUR</p>
         <p>Opis: {izdelek.opis}</p>
         <p>Zaloga: {izdelek.zaloga}</p>

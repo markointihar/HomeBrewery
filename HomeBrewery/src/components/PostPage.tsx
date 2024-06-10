@@ -31,7 +31,7 @@ const PostPage: React.FC = () => {
 
     const fetchPost = async () => {
         try {
-            const response = await axios.get(`http://localhost:3000/api/posts/${postId}`);
+            const response = await axios.get(`https://home-brewery-server.vercel.app/api/posts/${postId}`);
             setPost(response.data);
             const score = response.data.upvotes - response.data.downvotes;
             setScore(score);
@@ -42,8 +42,8 @@ const PostPage: React.FC = () => {
 
     const handleVote = async (postId: number, type: 'upvote' | 'downvote') => {
         try {
-            await axios.post(`http://localhost:3000/api/posts/${postId}/${type}`);
-            const response = await axios.get(`http://localhost:3000/api/posts/${postId}`);
+            await axios.post(`https://home-brewery-server.vercel.app/api/posts/${postId}/${type}`);
+            const response = await axios.get(`https://home-brewery-server.vercel.app/api/posts/${postId}`);
             const score = response.data.upvotes - response.data.downvotes;
             setScore(score);
         } catch (error) {
@@ -53,7 +53,7 @@ const PostPage: React.FC = () => {
 
     const fetchComments = async () => {
         try {
-            const response = await axios.get(`http://localhost:3000/api/posts/${postId}/comments`);
+            const response = await axios.get(`https://home-brewery-server.vercel.app/api/posts/${postId}/comments`);
             setComments(response.data);
             setCommentCount(response.data.length);
         } catch (error) {
@@ -64,13 +64,13 @@ const PostPage: React.FC = () => {
     const handleCommentSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const google_id = sessionStorage.getItem("authToken");
-        const userResponse = await axios.get("http://localhost:3000/get-user-id", {
+        const userResponse = await axios.get("https://home-brewery-server.vercel.app/get-user-id", {
             params: { google_id: google_id },
         });
         const user_id = userResponse.data.id;
 
         try {
-            await axios.post(`http://localhost:3000/api/posts/${postId}/comments`, { content: newComment, user_id: user_id, postId: postId });
+            await axios.post(`https://home-brewery-server.vercel.app/api/posts/${postId}/comments`, { content: newComment, user_id: user_id, postId: postId });
             setNewComment('');
             fetchComments(); // Fetch comments again to update the list and comment count
         } catch (error) {
@@ -80,7 +80,7 @@ const PostPage: React.FC = () => {
 
     const fetchLatestPosts = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/api/posts');
+            const response = await axios.get('https://home-brewery-server.vercel.app/api/posts');
             const postsWithScore = response.data.map((post: any) => ({
                 ...post,
                 score: post.upvotes - post.downvotes

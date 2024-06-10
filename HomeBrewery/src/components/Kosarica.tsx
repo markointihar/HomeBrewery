@@ -31,7 +31,7 @@ const Kosarica: React.FC = () => {
 const handlePurchase = async () => {
     try {
       for (const izdelek of kosarica) {
-        await axios.post('http://localhost:3000/api/izdelki/kupi', { id: izdelek.id });
+        await axios.post('https://home-brewery-server.vercel.app/api/izdelki/kupi', { id: izdelek.id });
       }
       alert('Nakup uspešno potrjen!');
       sessionStorage.removeItem('cart');
@@ -43,7 +43,7 @@ const handlePurchase = async () => {
 
   const purchaseIzdelek = async (id: number) => {
     try {
-      const response = await axios.post('http://localhost:3000/api/izdelki/kupi', { id });
+      const response = await axios.post('https://home-brewery-server.vercel.app/api/izdelki/kupi', { id });
       console.log(response.data); // Assuming response contains 'Nakup uspešno potrjen'
       const updatedKosarica = kosarica.filter(item => item.id !== id);
       setKosarica(updatedKosarica);
@@ -76,7 +76,7 @@ const handlePurchase = async () => {
               <div className='izdelekk' key={index}>
                 <div className='izdelek-child'>
                   <h2>{izdelek.naziv}</h2>
-                  {izdelek.slika && <img src={`http://localhost:3000/uploads/${izdelek.slika}`} alt={izdelek.naziv} />}
+                  {izdelek.slika && <img src={`https://home-brewery-server.vercel.app/uploads/${izdelek.slika}`} alt={izdelek.naziv} />}
                 </div>
                 <div className='izdelek-child'>
                   <p>Cena: {izdelek.cena} EUR</p>

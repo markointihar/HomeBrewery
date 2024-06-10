@@ -2,23 +2,21 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../css/NewPostForm.css';
 import Sidebar  from '../components/Sidebar';
-import RightSidebar  from '../components/RightSidebar';
 import '../css/Home.css';
 import '../css/Container.css';
 import '../css/globalDark.css';
-import { useDarkMode } from '../components/DarkModeProvider.tsx';
 
 const NewPostForm: React.FC = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
-    const [user_id, setUserID] = useState('');
+    const [, setUserID] = useState('');
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
         try {
             const google_id = sessionStorage.getItem("authToken");
-            const userResponse = await axios.get("http://localhost:3000/get-user-id", {
+            const userResponse = await axios.get("https://home-brewery-server.vercel.app/get-user-id", {
                 params: {
                     google_id: google_id,
                 },
@@ -26,7 +24,7 @@ const NewPostForm: React.FC = () => {
             const user_id = userResponse.data.id;
             setUserID(user_id);
 
-            await axios.post('http://localhost:3000/api/posts', {
+            await axios.post('https://home-brewery-server.vercel.app/api/posts', {
                 title,
                 content,
                 user_id

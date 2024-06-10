@@ -28,7 +28,7 @@ const ChatRoom = ({ablyClient} : ChatroomProps) => {
       return () => {
           channel.unsubscribe();
       };
-  }, [ablyClient, roomId, username, isConnected]);
+  }, [ablyClient, roomId, isConnected]);
 
   const sendMessage = () => {
       const channel = ablyClient.channels.get(`room-${roomId}`);

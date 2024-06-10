@@ -41,7 +41,7 @@ const DodajIzdelek: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Izdelek, ki se doda:'izdelek)
+    console.log('Izdelek, ki se doda: ',izdelek)
     axios.post('https://home-brewery-server.vercel.app/api/izdelki', izdelek, {
       headers: {
         'Content-Type': 'application/json'

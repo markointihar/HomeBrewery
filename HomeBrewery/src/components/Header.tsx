@@ -6,6 +6,8 @@ import '../css/Header.css';
 import '../css/globalDark.css';
 import pfp from "../assets/profile.svg";
 import axios from 'axios';
+import magn_glass from "../assets/search-512.jpg";
+
 
 const Header: React.FC = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -76,7 +78,7 @@ const Header: React.FC = () => {
         onChange={handleSearchInputChange}
     />
     <button className="search-button" onClick={handleSearch}>
-        <img className ="magn_glass" src="/assets/search-512.jpg" alt="Search" />
+        <img className ="magn_glass" src={magn_glass} alt="Search" />
     </button> {/* Added button inside the input */}
 </div>
 

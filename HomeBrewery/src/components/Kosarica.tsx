@@ -26,21 +26,6 @@ const Kosarica: React.FC = () => {
     sessionStorage.setItem('cart', JSON.stringify(updatedCart));
   };
 
-/*mašina ne je dela 
-
-const handlePurchase = async () => {
-    try {
-      for (const izdelek of kosarica) {
-        await axios.post('https://home-brewery-server.vercel.app/api/izdelki/kupi', { id: izdelek.id });
-      }
-      alert('Nakup uspešno potrjen!');
-      sessionStorage.removeItem('cart');
-      setKosarica([]);
-    } catch (error) {
-      console.error('Napaka pri potrjevanju nakupa:', error);
-    }
-  }; */
-
   const purchaseIzdelek = async (id: number) => {
     try {
       const response = await axios.post('https://home-brewery-server.vercel.app/api/izdelki/kupi', { id });
@@ -63,7 +48,6 @@ const handlePurchase = async () => {
   const totalCena = kosarica.reduce((total, izdelek) => total + izdelek.cena, 0);
 
   
-  // glej 3/5 in 5/5
   return (
     <div className="kosarica-container">
       <h1>Košarica</h1>
@@ -76,7 +60,7 @@ const handlePurchase = async () => {
               <div className='izdelekk' key={index}>
                 <div className='izdelek-child'>
                   <h2>{izdelek.naziv}</h2>
-                  {izdelek.slika && <img src={`https://home-brewery-server.vercel.app/uploads/${izdelek.slika}`} alt={izdelek.naziv} />}
+                  {izdelek.slika && <img src={izdelek.slika} alt={izdelek.naziv} />}
                 </div>
                 <div className='izdelek-child'>
                   <p>Cena: {izdelek.cena} EUR</p>
@@ -85,7 +69,6 @@ const handlePurchase = async () => {
                 <div className='izdelek-child'>
                   <button onClick={() => removeFromCart(izdelek.id)}>Odstrani</button>
                 </div>
-                
               </div>
             ))}
           </div>

@@ -27,6 +27,8 @@ import MyComponent from "./components/MyComponent.tsx";
 import SearchResults from "./components/SearchResults.tsx";
 
 // import "./css/global.css" 
+import * as Ably from 'ably';
+const ablyClient = new Ably.Realtime({ key: "WB4gqQ.IJF27w:491v-M7GaY6dJggA7FZr0ZczbathqfS3e-MrtLGeMfA" });
 
 const router = createBrowserRouter([
   {
@@ -85,7 +87,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/room/:roomId",
-    element: [<Navbar />, <ChatRoom />, <Footer />],
+    element: [<Navbar />, <ChatRoom ablyClient={ablyClient} />, <Footer />],
   },
   {
     path: "/login-success",

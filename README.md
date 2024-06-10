@@ -19,11 +19,29 @@ samodejno dodali na uporabnikov Google kolendar.
 
 ---
 
-### Uporabljene tehnologije
-| React | Typescript| Vite |
-| --- | --- | --- |
-| ![React](./dokumentacija/react.png) | ![Typescript](./dokumentacija/typescript.png)  | ![Vite](./dokumentacija/vite.jpeg) |
+### Predvideni uporabniki
+Aplikacija je namenjana osebam, ki želijo začeti z varjenjem piva ali pa tudi tistim, ki so že domači v svetu varjenja domačega piva in se želijo naučiti kaj novega ali pomagati drugim.
 
+---
+
+### Uporabljene tehnologije
+| React | Typescript| Vite | Ably | NodeJs |
+| --- | --- | --- | --- | --- |
+| ![React](./dokumentacija/react.png) | ![Typescript](./dokumentacija/typescript.png)  | ![Vite](./dokumentacija/vite.jpeg) | ![Ably](./dokumentacija/ably.webp) | ![Ably](./dokumentacija/node-js-icon-909x1024-ig4gm9k7.webp) |
+
+
+### Končni izgled aplikacije
+![Home](./dokumentacija/Screenshot%202024-06-10%20at%2012.58.50.png)
+![Chat](./dokumentacija/Screenshot%202024-06-10%20at%2013.58.53.png)
+![Profil](./dokumentacija/ScreenshotProfile.png)
+---
+
+### Deployment
+Frontend in backend sta deployana na [Vercel](vercel.com). Frontend in Backend repozitorija sta ločena:
+ - Link do [backenda](https://github.com/markointihar/HomeBreweryServer).
+ - Link do [frontenda](https://github.com/markointihar/HomeBrewery)
+
+---
 
 ### Navodila lokalne namestitve
 1. Kloniraj repozitorij
@@ -33,7 +51,6 @@ cd HomeBrewery
 npm i
 ```
 3. Zaženemo aplikacijo `npm run dev`
-
-
+4. Na frontendu in backendu potrebujete .env datoteko. Pišite nam in vam pošljemo potrebne podatke.
 
 

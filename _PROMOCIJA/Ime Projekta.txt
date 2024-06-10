@@ -1,0 +1,24 @@
+HomeBrewery
+
+Kratek plot v eni vrstici, ki povzame bistvo rešitve
+
+Leto izdelave: 2022
+
+Andrej Majhen
+Nino Lisjak
+Marko Intihar
+
+Domača stran: https://home-brewery.vercel.app/
+Vir podatkov: https://home-brewery-server.vercel.app/
+...
+Koda: https://github.com/markointihar/HomeBrewery
+
+Kategorizacija: spletna aplikacija
+
+Oznake: React, MySql, NodeJS, GitHub, Express, REST, Ably
+
+Na aplikaciji se lahko uporabnik nauči o postopku varjenja piva. Vse pripomočke in surovine lahko kupi na spletni trgovini aplikacije. Ko bo uporabnik naletel na težave ima dve opciji za 
+iskanje pomoči. HomeBrewery ponuja forum kjer lahko objavi svoje vprašanje ali pa poišče, če je kdo drug imel podoben problem. Objavo lahko "upvote-a", "downvote-a" ali pa komentira. To 
+lahko stori po tem ko se prijavi s svojim Google računom. Druga opcija za reševanje problemov je uporaba "real time chat-a" kjer lahko komunicira z strokovnjaki. Ko uporabnik pritisne na pomoč
+se bo ustvarila soba in strokovnjaki bodo dobili povezavo do sobe. Ko se uporabnik počuti pripravljenega lahko ustvari svoj plan varjenja oziroma recept, kjer se bodo časovno pomembni dogodki
+samodejno dodali na uporabnikov Google kolendar.

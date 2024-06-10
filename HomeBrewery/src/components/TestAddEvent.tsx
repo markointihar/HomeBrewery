@@ -75,7 +75,7 @@ export default function TestAddEvent() {
     <>
       <Navbar />
       <div className="container">
-        <h1>Brewing planer</h1>
+        <h1>Načrtovalnik varjenja</h1>
         <div className="intro">
           <p>
             Spodaj je preprost recept za varjenje piva. Ob vsaki sestavini imate
@@ -251,7 +251,7 @@ export default function TestAddEvent() {
           </ol>
         </div>
 
-        <button onClick={handleDodaj}>dodaj</button>
+        <button onClick={handleDodaj}>Dodaj</button>
       </div>
     </>
   );

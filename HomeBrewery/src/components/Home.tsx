@@ -60,7 +60,7 @@ export default function Home(){
               <div className="image-container">
                 <img src={wheatbackground} alt="Your Alt Text" className="background-image" />
                 <div className='overlay-text'>
-                  <h1>Homebrewery</h1>
+                  <h1>HomeBrewery</h1>
                   <h2>Homebrewing je umetnost in znanost priprave lastnega piva doma. Ta proces vključuje več korakov, vsak s svojimi tehnikami in posebnostmi, ki prispevajo k končnemu okusu in značaju piva.</h2>
                   <h2>Brskajte po <Link to="/forum">forumu</Link>, <Link to="/izdelki">kupujte</Link> potrebne pripomočke in surovine, <Link to="/dodaj">planirajte svoj Homebrew</Link>  ter, če ste v dvomih vprašajte za <Link to="" onClick={createRoom}>pomoč</Link></h2>
                 </div>

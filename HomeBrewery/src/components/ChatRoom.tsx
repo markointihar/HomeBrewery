@@ -44,8 +44,8 @@ const ChatRoom = ({ablyClient} : ChatroomProps) => {
 
   return (
       <div className='chat-container'>
-          <h1>Chat Room</h1>
-          <p>Napiši username in počakaj da se ti pridruži strokovnjak</p>
+          <h1>Pomoč</h1>
+          <p>Napiši uporabniško ime in počakaj da se ti pridruži strokovnjak</p>
           <div className='sporocila'>
               {messages.map((msg, index) => {
                   //const className = msg.startsWith('You:') ? 'your-message' : 'other-message';
@@ -81,7 +81,7 @@ const ChatRoom = ({ablyClient} : ChatroomProps) => {
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Napiši sporočilo..."
               />
-              <button onClick={sendMessage}>Send</button>
+              <button onClick={sendMessage}>Pošlji</button>
           </div>
       </div>
   );

@@ -119,7 +119,7 @@ const DodajIzdelek: React.FC = () => {
           </select>
         </div>
         <div className="form-group">
-        <label htmlFor="slikaUrl">URL slike:</label>
+          <label htmlFor="slikaUrl">URL slike:</label>
           <input
             type="text"
             id="slikaUrl"

@@ -4,7 +4,7 @@ import '../css/chatroom.css'
 
 import io from 'socket.io-client';
 
-const socket = io('https://home-brewery-server.vercel.app', { transports: ['websocket', 'polling'] });
+const socket = io('https://home-brewery-server.vercel.app', { transports: ['websocket'] });
 
 
 

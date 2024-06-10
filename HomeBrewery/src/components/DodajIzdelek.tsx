@@ -46,7 +46,7 @@ const DodajIzdelek: React.FC = () => {
     console.log("formData:. ", formData);
     axios.post('https://home-brewery-server.vercel.app/api/izdelki', formData, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'application/json'
       }
     })
     .then(response => {

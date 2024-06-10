@@ -104,12 +104,13 @@ const Header: React.FC = () => {
                                 </div>
                                 <Link to="/profil">Profil</Link>
                                 <div className="dark-mode-toggle">
-                                    <label className="switch">
-                                        <input type="checkbox" checked={darkMode} readOnly />
-                                        <span className="slider round" onClick={handleToggleDarkMode}></span>
-                                        <span className="dark-mode-text">Temen način</span>
-                                    </label>
-                                </div>
+    <span className="dark-mode-text">Temen način</span>
+    <label className="switch">
+        <input type="checkbox" checked={darkMode} readOnly />
+        <span className="slider round" onClick={handleToggleDarkMode}></span>
+    </label>
+</div>
+
                                 <div onClick={handleLogout}>Odjava</div>
                             </div>
                         )}

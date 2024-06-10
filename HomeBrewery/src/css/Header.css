@@ -111,7 +111,6 @@ header {
     color: #555; /* Adjust color if needed */
 }
 
-
 .dropdown-menu .profile-banner .profile-info .name {
     font-weight: bold;
     white-space: nowrap; /* Prevents text from wrapping */
@@ -138,39 +137,16 @@ header {
 .dropdown-menu a:hover, .dropdown-menu div:hover {
     background-color: rgba(248, 192, 88, 0.2);
 }
-/* Update your CSS to display "Dark Mode" text inline with the slider */
+
 .dark-mode-toggle {
     display: flex;
     align-items: center;
     padding: 15px 20px;
     cursor: pointer;
-    position: relative; /* Ensure relative positioning */
 }
 
 .dark-mode-toggle .dark-mode-text {
     margin-right: 10px; /* Adjust margin as needed */
-}
-
-.dark-mode-toggle label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.2em;
-    cursor: pointer;
-}
-
-
-.dark-mode-icon {
-    font-size: 1.5em;
-}
-
-.slider-container {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: 50%;
-    right: 20px; /* Adjust positioning as needed */
-    transform: translateY(-50%);
 }
 
 .switch {
@@ -227,20 +203,10 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
-/* Add this CSS to adjust the position of "Dark Mode" text */
-.dark-mode-text {
-    margin-right: 10px; /* Adjust margin as needed */
-}
-
-.dark-mode-text {
-    margin-right: auto; /* Adjust margin as needed */
+.dark-mode-icon {
+    font-size: 1.5em;
 }
 
 .magn_glass {
     width: 25px;
 }
-
-/* Adjust the position of the slider */
-
-
-/* Position the "Dark Mode" text */

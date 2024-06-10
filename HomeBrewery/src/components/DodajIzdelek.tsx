@@ -14,7 +14,7 @@ const DodajIzdelek: React.FC = () => {
   const [cena, setCena] = useState('');
   const [opis, setOpis] = useState('');
   const [zaloga, setZaloga] = useState('');
-  const [slika, setSlika] = useState<File | null>(null);
+  const [slikaUrl, setSlikaUrl] = useState('');
   const [kategorija_id, setKategorijaId] = useState<number | null>(null);
   const [kategorije, setKategorije] = useState<Kategorija[]>([]);
   const [, setMessage] = useState('');
@@ -33,16 +33,16 @@ const DodajIzdelek: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    const formData = new FormData();
-    formData.append('naziv', naziv);
-    formData.append('cena', cena);
-    formData.append('opis', opis);
-    formData.append('zaloga', zaloga);
-    formData.append('kategorija_id', kategorija_id?.toString() || '');
-    if (slika){
-      formData.append('slika', slika);
-    }
-    axios.post('https://home-brewery-server.vercel.app/api/izdelki', formData, {
+    const izdelekData = {
+      naziv,
+      cena,
+      opis,
+      zaloga,
+      slika: slikaUrl, // Use the URL instead of a file
+      kategorija_id,
+    };
+
+    axios.post('https://home-brewery-server.vercel.app/api/izdelki', izdelekData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
@@ -55,7 +55,7 @@ const DodajIzdelek: React.FC = () => {
       setOpis('');
       setZaloga('');
       setKategorijaId(null);
-      setSlika(null);
+      setSlikaUrl('');
     })
     .catch(error => {
       console.error('Prišlo je do napake pri dodajanju izdelka:', error);
@@ -116,11 +116,13 @@ const DodajIzdelek: React.FC = () => {
           </select>
         </div>
         <div className="form-group">
-          <label htmlFor="slika">Slika:</label>
+          <label htmlFor="slikaUrl">URL slike:</label>
           <input
-            type="file"
-            id="slika"
-            onChange={(e) => setSlika(e.target.files?.[0] || null)}
+            type="text"
+            id="slikaUrl"
+            value={slikaUrl}
+            onChange={(e) => setSlikaUrl(e.target.value)}
+            required
           />
         </div>
         <button type="submit">Dodaj izdelek</button>

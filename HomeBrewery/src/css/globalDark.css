@@ -57,3 +57,106 @@ body.dark-mode .containerr {
 body.dark-mode .contentt {
     background-color: #333;
 }
+
+body.dark-mode .containerPost {
+    background-color: #3e3636;
+    color: #e0e0e0;
+}
+
+body.dark-mode .contentPost {
+    background-color: #2b2b2b;
+}
+
+body.dark-mode .post-container {
+    background-color: #444;
+    border: 1px solid #333;
+}
+
+body.dark-mode .vote .score {
+    color: #e0e0e0;
+}
+
+body.dark-mode .post-title {
+    color: #f4f4f4;
+}
+
+body.dark-mode .post-meta {
+    color: #ccc;
+}
+
+body.dark-mode .post-body {
+    color: #ccc;
+}
+
+body.dark-mode .comments-section {
+    background-color: #444;
+    border: 1px solid #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .comments-count {
+    color: #f8c058;
+}
+
+body.dark-mode .comments-section h2 {
+    color: #f8c058;
+}
+
+body.dark-mode .comment-user span {
+    color: #e0e0e0;
+}
+
+body.dark-mode .comment-content {
+    background-color: #333;
+    color: #ccc;
+}
+
+body.dark-mode .comment p {
+    color: #ccc;
+}
+
+body.dark-mode .replies {
+    border-left: 1px solid #333;
+}
+
+body.dark-mode .comment-form textarea {
+    background-color: #2e2b2b;
+    color: #e0e0e0;
+    border: 1px solid #444;
+}
+
+body.dark-mode .comment-form button {
+    background-color: #f8c058;
+    color: #fff;
+}
+
+body.dark-mode .new-post-form {
+    background-color: #2e2e2e;
+    border: 1px solid #444;
+    color: #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .new-post-form h2 {
+    color: #f8c058; /* Yellow color */
+}
+
+body.dark-mode .form-group label {
+    color: #ccc;
+}
+
+body.dark-mode .form-group input[type="text"],
+body.dark-mode .form-group textarea {
+    background-color: #444;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+body.dark-mode .form-group button {
+    background-color: #f8c058; /* Yellow color */
+    color: #fff;
+}
+
+body.dark-mode .form-group button:hover {
+    background-color: #ffa726; /* Slightly darker yellow */
+}

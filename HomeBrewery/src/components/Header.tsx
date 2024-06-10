@@ -6,6 +6,8 @@ import '../css/Header.css';
 import '../css/globalDark.css';
 import pfp from "../assets/profile.svg";
 import axios from 'axios';
+import magn_glass from "../assets/search-512.jpg";
+
 
 const Header: React.FC = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -76,7 +78,7 @@ const Header: React.FC = () => {
         onChange={handleSearchInputChange}
     />
     <button className="search-button" onClick={handleSearch}>
-        <img className ="magn_glass" src="../src/search-512.webp" alt="Search" />
+        <img className ="magn_glass" src={magn_glass} alt="Search" />
     </button> {/* Added button inside the input */}
 </div>
 
@@ -102,12 +104,13 @@ const Header: React.FC = () => {
                                 </div>
                                 <Link to="/profil">Profil</Link>
                                 <div className="dark-mode-toggle">
-                                    <label className="switch">
-                                        <input type="checkbox" checked={darkMode} readOnly />
-                                        <span className="slider round" onClick={handleToggleDarkMode}></span>
-                                        <span className="dark-mode-text">Temen način</span>
-                                    </label>
-                                </div>
+    <span className="dark-mode-text">Temen način</span>
+    <label className="switch">
+        <input type="checkbox" checked={darkMode} readOnly />
+        <span className="slider round" onClick={handleToggleDarkMode}></span>
+    </label>
+</div>
+
                                 <div onClick={handleLogout}>Odjava</div>
                             </div>
                         )}

@@ -57,7 +57,7 @@ const ChatRoom = ({ablyClient} : ChatroomProps) => {
               })}
           </div>
           <div className='forma'>
-              {!isConnected && (
+              {messages.length == 0 && (
                   <input
                       type="text"
                       value={username}

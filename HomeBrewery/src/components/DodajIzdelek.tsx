@@ -43,7 +43,7 @@ const DodajIzdelek: React.FC = () => {
     if (kategorija_id !== null) {
       formData.append('kategorija_id', kategorija_id.toString());
     }
-
+    console.log("formData:. ", formData);
     axios.post('https://home-brewery-server.vercel.app/api/izdelki', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'

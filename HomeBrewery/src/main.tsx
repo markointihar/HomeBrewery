@@ -99,7 +99,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/forum",
-    element: [<Header />, <HomeForum />],
+    element: [<Header />, <HomeForum />, <Footer /> ],
   },
   {
     path: "/forumProfile",
@@ -107,15 +107,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/popularPosts",
-    element: [<Header />, <Popular />],
+    element: [<Header />, <Popular />,<Footer />],
   },
   {
     path: "/newPost",
-    element: [<Header />, <NewPostForm />],
+    element: [<Header />, <NewPostForm />,<Footer />],
   },
   {
     path: "/posts/:postId", // Define postId as a route parameter
-    element: [<Header />, <PostPage />],
+    element: [<Header />, <PostPage />,<Footer />],
   },
   {
     path: "/profil",
@@ -127,7 +127,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/search",
-    element: [<Header/>,<SearchResults/>]
+    element: [<Header/>,<SearchResults/>,<Footer />]
   }
 ]);
 

@@ -67,7 +67,7 @@ const Header: React.FC = () => {
 
     return (
         <header>
-            <Link to="/" className="logo">HomeBrewery Forum</Link>
+            <Link to="/" className="logo">HomeBrewery </Link>
             <div className="search-bar">
     <input
         type="text"
@@ -83,7 +83,7 @@ const Header: React.FC = () => {
             {
                 sessionStorage.getItem("authToken") === null && (
                     <div className="login-logout" onClick={handleLogin}>
-                        Login
+                        Prijava
                     </div>
                 )
             }
@@ -100,15 +100,15 @@ const Header: React.FC = () => {
                                         <div className="email">{userData.userEmail}</div>
                                     </div>
                                 </div>
-                                <Link to="/profil">Profile</Link>
+                                <Link to="/profil">Profil</Link>
                                 <div className="dark-mode-toggle">
                                     <label className="switch">
                                         <input type="checkbox" checked={darkMode} readOnly />
                                         <span className="slider round" onClick={handleToggleDarkMode}></span>
-                                        <span className="dark-mode-text">Dark Mode</span>
+                                        <span className="dark-mode-text">Temen način</span>
                                     </label>
                                 </div>
-                                <div onClick={handleLogout}>Logout</div>
+                                <div onClick={handleLogout}>Odjava</div>
                             </div>
                         )}
                     </div>

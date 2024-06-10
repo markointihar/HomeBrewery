@@ -105,7 +105,7 @@ const PostPage: React.FC = () => {
                         <div className="post-content">
                             <h2 className="post-title">{post.title}</h2>
                             <div className="post-meta">
-                                <span>Posted by {post.name} on {new Date(post.created_at).toLocaleString()}</span>
+                                <span>Objavil {post.name} dne {new Date(post.created_at).toLocaleString()}</span>
                             </div>
                             <div className="post-body">
                                 <p>{post.content}</p>
@@ -117,7 +117,7 @@ const PostPage: React.FC = () => {
                 <div className="comments-section">
                     <div className="comments-header">
                         <span className="comments-count">{commentCount}</span>
-                        <h2>Comments</h2>
+                        <h2>Komentarji:</h2>
                     </div>
                     <div className="comment-list">
                         {comments.map(comment => (
@@ -137,9 +137,9 @@ const PostPage: React.FC = () => {
                             <textarea
                                 value={newComment}
                                 onChange={(e) => setNewComment(e.target.value)}
-                                placeholder="Add your comment"
+                                placeholder="Dodaj komentar..."
                             ></textarea>
-                            <button type="submit">Submit</button>
+                            <button type="submit">Komentiraj</button>
                         </form>
                     </div>
                 </div>

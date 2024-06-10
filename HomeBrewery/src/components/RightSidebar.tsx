@@ -23,8 +23,10 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ latestPosts }) => {
 
     return (
         <aside className="right-sidebar">
-            <button className="add-topic-btn" onClick={handleNewTopicClick}>Start a New Topic</button>
-            <h2>Latest Posts</h2>
+            <button className="add-topic-btn" onClick={handleNewTopicClick}>
+                <span className="plus-icon">+</span> Začni novo temo
+            </button>
+            <h2>Nedavne teme:</h2>
             <ul>
                 {latestPosts.map((post) => (
                     <li key={post.id}>

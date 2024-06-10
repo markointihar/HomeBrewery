@@ -48,9 +48,19 @@ const ChatRoom = ({ablyClient} : ChatroomProps) => {
           <p>Napiši username in počakaj da se ti pridruži strokovnjak</p>
           <div className='sporocila'>
               {messages.map((msg, index) => {
-                  const className = msg.startsWith('You:') ? 'your-message' : 'other-message';
+                  //const className = msg.startsWith('You:') ? 'your-message' : 'other-message';
+
+                  let messageClass = '';
+                  if (msg.startsWith('You:')) {
+                      messageClass = 'your-message';
+                  } else if(msg.startsWith(username)){
+                      messageClass = 'moj';
+                  } else {
+                      messageClass = 'other-message';
+                  }
+
                   return (
-                      <div className={className} key={index}>
+                      <div className={messageClass} key={index}>
                           {msg}
                       </div>
                   );

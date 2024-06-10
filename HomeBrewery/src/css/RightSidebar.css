@@ -8,8 +8,10 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-left: 20px; /* Adjust margin to space it from the main content */
 }
+
 .right-sidebar .add-topic-btn {
-    display: block;
+    display: flex;
+    align-items: center;
     width: calc(100% - 40px); /* Adjust width to accommodate padding */
     padding: 10px;
     margin-bottom: 20px;
@@ -20,7 +22,25 @@
     cursor: pointer;
 }
 
+.right-sidebar .plus-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: wheat;
+    border-radius: 50%;
+}
+
 .right-sidebar .add-topic-btn:hover {
+    background-color: #fcd36a;
+}
+
+.right-sidebar .add-topic-btn:hover .plus-icon {
     background-color: #fcd36a;
 }
 

@@ -44,10 +44,10 @@ const NewPostForm: React.FC = () => {
             <Sidebar />
             <main className="contentt">
                 <div className="new-post-form">
-                    <h2>Create a New Post</h2>
+                    <h2>Ustvari novo temo</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <label htmlFor="title">Title</label>
+                            <label htmlFor="title">Naslov</label>
                             <input
                                 type="text"
                                 id="title"
@@ -58,7 +58,7 @@ const NewPostForm: React.FC = () => {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="content">Content</label>
+                            <label htmlFor="content">Vsebina</label>
                             <textarea
                                 id="content"
                                 name="content"
@@ -69,7 +69,7 @@ const NewPostForm: React.FC = () => {
                             ></textarea>
                         </div>
                         <div className="form-group">
-                            <button type="submit">Post</button>
+                            <button type="submit">Objavi</button>
                         </div>
                     </form>
                 </div>

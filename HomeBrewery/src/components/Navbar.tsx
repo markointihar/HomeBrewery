@@ -65,7 +65,7 @@ export default function Navbar() {
 
         {sessionStorage.getItem("authToken") === null && (
           <div className="item" onClick={handleLogin}>
-            Login
+            Prijava
           </div>
         )}
       </div>

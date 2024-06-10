@@ -27,25 +27,16 @@ const Izdelki: React.FC = () => {
 
   useEffect(() => {
     axios.get('https://home-brewery-server.vercel.app/api/izdelki')
-    .then(response => {
-      const data = response.data.izdelki.map((izdelek: any) => {
-        const decoder = new TextDecoder('utf-8');
-        const slika = decoder.decode(new Uint8Array(izdelek.slika.data));
-        
-        return {
-          ...izdelek,
-          slika // Pretvorimo Buffer nazaj v niz
-        };
+      .then(response => {
+        setIzdelki(response.data.izdelki);
+        setKategorije(response.data.kategorije);
+      })
+      .catch(error => {
+        console.error('Prišlo je do napake pri pridobivanju podatkov:', error);
       });
-      console.log(data); // Preverimo, kaj dobimo po pretvorbi
-      setIzdelki(data);
-      setKategorije(response.data.kategorije);
-    })
-    .catch(error => {
-      console.error('Prišlo je do napake pri pridobivanju podatkov:', error);
-    });
-}, []);
+  }, []);
 
+  
 const handleCategoryChange = (id: number) => {
     setSelectedCategories(prevSelected => 
       prevSelected.includes(id) 
@@ -91,7 +82,7 @@ const handleCategoryChange = (id: number) => {
             <div key={index} className="izdelek">
               <Link to={`/izdelki/${izdelek.id}`}>
                 <h2>{izdelek.naziv}</h2>
-                {izdelek.slika && <img src={`https://home-brewery-server.vercel.app/uploads/${izdelek.slika}`} alt={izdelek.naziv} />} {/* Posodobljeno: pravilna sestava URL-ja */}
+                {izdelek.slika && <img src={izdelek.slika} alt={izdelek.naziv} />}
               </Link>
               <p>Cena: {izdelek.cena} EUR</p>
               <p>Opis: {izdelek.opis}</p>
